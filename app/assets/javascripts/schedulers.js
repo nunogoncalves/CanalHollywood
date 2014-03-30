@@ -17,8 +17,6 @@ $.schedulers = {
 	},
 
 	startMovieOnAirProgress: function(id, start, end, movieName) {
-		// start = new Date(start).addHours((new Date(start).getTimezoneOffset()) / 60).getTime();
-		// end = new Date(end).addHours((new Date(end).getTimezoneOffset()) / 60).getTime();
 		var $progDiv = $("#progress_div_" + id),
 		    $progSpan = $("#span_percentage_" + id),
 				fullMoviePercentage = 100,
@@ -31,7 +29,6 @@ $.schedulers = {
 			now = new Date().addHours(-1 * new Date().getTimezoneOffset() / 60).getTime();
 			// now = new Date().getTime();
 			percentage = parseFloat(((now - start) / (end - start) * 100)).toFixed(2);
-			console.log(movieName + " - " + percentage)
 			var $marquee = $("#on_air_marqee_element");
 
 			if(percentage < fullMoviePercentage && percentage > 0) {

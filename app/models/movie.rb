@@ -127,10 +127,9 @@ class Movie < ActiveRecord::Base
   end
 
   def self.current_movie
-    now = DateTime.now
+    now = DateTime.now + 1.hours
     now_schedule = Schedule.where("start_date_time < ? AND end_date_time > ?", now, now).first
-    current_movie_id =  now_schedule.movie_id
-    movie = Movie.find(current_movie_id)
+    movie = now_schedule.movie
   end
 
 end

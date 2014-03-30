@@ -1,7 +1,6 @@
-<% now = DateTime.now %>
+<% now = DateTime.now + 1.hours %>
 <% now_schedule = Schedule.where("start_date_time < ? AND end_date_time > ?", now, now).first %>
-<% current_movie_id =  now_schedule.movie_id %>
-<% movie = Movie.find(current_movie_id) %>
+<% movie = now_schedule.movie %>
 
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="navbar-header">
