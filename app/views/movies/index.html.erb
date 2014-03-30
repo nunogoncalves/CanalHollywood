@@ -1,0 +1,12 @@
+<%= render "filters" %>
+<%= render "sort_orders" %>
+
+<ul class="schedule_of_day_container">
+	<%= render 'list' %>
+</ul>
+
+<script>
+	$(function() {
+		$.movies.load();
+	});
+</script>

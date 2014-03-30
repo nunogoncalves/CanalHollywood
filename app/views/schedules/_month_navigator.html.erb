@@ -1,0 +1,5 @@
+<div class="day_scheduler_navigator white">
+	<span><a class="label label-warning glyphicon glyphicon-chevron-left" href="?date=<%= previous_month_submit_date(@date) %>"><%= previous_month_text(@date) %></a></span>
+	<span class="label label-primary" style="font-size: 17px"><%= current_month_formatted(@date) %></span>
+	<span><a class="label label-success glyphicon glyphicon-chevron-right" href="?date=<%= next_month_submit_date(@date) %>"><%= next_month_text(@date) %></a></span>
+</div>

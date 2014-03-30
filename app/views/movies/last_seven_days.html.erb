@@ -1,0 +1,7 @@
+<div style="width: 100%">
+	<ul class="schedule_of_day_container">
+		<% @movies.each do |movie| %>
+			<%= render "schedules/item", movie: movie %>
+		<% end %>
+	</ul>
+</div>

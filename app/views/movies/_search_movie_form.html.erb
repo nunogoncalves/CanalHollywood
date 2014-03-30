@@ -1,0 +1,6 @@
+<%= search_form_for @searcher.search do |f| %>
+	<%= f.text_field :original_name_cont, placeholder: "Nome original", style: "width: 90px" %>
+	<%= f.text_field :local_name_cont, placeholder: "Nome português", style: "width: 90px" %>
+	<%= f.text_field :year_eq, placeholder: "Ano", style: "width: 117px" %>
+	<button><% f.submit "Procurar" %>Procurar</button>
+<% end %>

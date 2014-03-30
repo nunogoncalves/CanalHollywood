@@ -1,0 +1,12 @@
+<h1><%= I18n.l(@date, format: "%B de %Y") %></h1>
+<% begin_date = @date.at_beginning_of_month.change(hour: 6, min: 0) %>
+<% end_date = begin_date.next_month %>
+<% @movies_ids.each do |m_id| %>
+	<% schedules = Schedule.where("movie_id = ? AND start_date_time > ? AND end_date_time < ?", m_id, begin_date, end_date) %>
+	<div class="white">
+		Filme: <%= Movie.find(m_id).original_name %>, count: <%= schedules.count %></br>
+		<%= schedules.map{ |s| s.start_date_time.strftime("%Y-%m-%d %H:%M")} %></br>
+		------------------------------------------------------------</br>
+		------------------------------------------------------------
+	</div>
+<% end %>

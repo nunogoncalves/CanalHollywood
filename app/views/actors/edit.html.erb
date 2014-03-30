@@ -1,0 +1,8 @@
+<div class="white">
+	Editar <%= @actor.name %>
+	<% if @actor.imdb_url.present? %>
+		<a href="<%= @actor.imdb_url %>" target="_blank"><img src="/assets/imdb_big.png" style="height: 20px"></a>
+	<% end %>
+</div>
+
+<%= render "form" %>

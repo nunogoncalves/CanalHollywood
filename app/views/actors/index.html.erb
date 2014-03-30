@@ -1,0 +1,28 @@
+<style>
+	.a_z_nav a {
+	 	text-transform: uppercase;
+		display: block;
+		font-weight: bold;
+		text-align: center;
+		text-decoration: none;
+	}
+</style>
+<div style="position: relative">
+	<%= link_to "Novo Actor", new_actor_path %></br>
+	<%= link_to "Filmes do dia", root_url %>
+
+	<div style="position: relative;">
+		<%= render 'actors_filters' %>
+	</div>
+
+	<div class="white a_z_nav" style="position: absolute; right: 20px;">
+		<% ('A' .. 'Z').to_a.each do |letter| %>
+			<div><a href="<%= actors_path(starts_with: letter, order: @order, q: @q) %>"><%= letter %></a></div>
+		<% end %>
+	</div>
+	<div class="white">A sua filtragem contém: <%= @total_result_count %> resultados.</div>
+	<div style="overflow-x:hidden; height: 500px;">
+		<%= render 'list' %>
+	</div>
+
+</div>

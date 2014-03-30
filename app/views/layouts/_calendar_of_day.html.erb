@@ -1,0 +1,12 @@
+<div class="calendar_of_day_container">
+	<div class="white day_span_container">
+		<span><%= "#{I18n.l(date, format: "%B")}" %></span>
+	</div>
+	<div style="background: white; height: 80%; margin-left: 10px; margin-right: 10px; border-radius: 4px;">
+		<div style="padding-top: 10px;"><span style="font-size: 45px;font-weight: 900;"><%= I18n.l(date, format: "%d") %></span></div>
+		<div style="margin-top: -4px; margin-bottom: 5px;"><span style="color: #cccccc; font-size: 16px;"><%= I18n.l(date, format: "%A") %></span></div>
+		<div style="height: 1px; background: rgb(199, 196, 196)"></div>
+		<div style="margin-top: 5px;"><span style="font-size: 24px"><%= "#{I18n.l(date, format: "%Y")}" %></span></div>
+		<%= link_to "Var no canal hollywood", "http://www.canalhollywood.pt/programacion/#{date.strftime("%Y-%m-%d")}", target: "_blank", style: "color: white; display: block; margin-top: 3px" %>
+	</div>
+</div>

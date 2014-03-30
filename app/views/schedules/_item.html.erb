@@ -1,0 +1,35 @@
+<% schedule ||= nil %>
+<li class="movie_item_container <%= 'on_air' if schedule && schedule.is_currently_on_air? %>">
+<% display = (schedule.present? && schedule.is_currently_on_air?) ? "block" : "none" %>
+<img class="on_air_image" src="/assets/onair_icon.png" style="position: absolute; width: 32px; height: 32px; margin-top: 23px; z-index: 1; display: <%= display %>">
+	<%= render 'schedules/item_top_bar', schedule: schedule, movie: movie %>
+	<div class="movie_item_photo_and_names_container">
+		<div class="small_image">
+			<div style="position_relative">
+				<div id="actual_movie_image_element_<%= movie.id %>" style="position: absolute"><img src="<%= movie.small_image_display %>" onerror="this.src='/assets/no_image.jpg'"></div>
+				<%#= render "schedules/movie_image_with_info_on_hover", movie: movie %>
+				<% if movie.missing_information? %>
+					<div><img class="small_movie_image_info_missing" src="/assets/refresh.png" onclick="$.movies.refreshMovie('#actual_movie_image_element_<%= movie.id %>', '<%= movie.id %>')"></div>
+				<% end %>
+			</div>
+		</div>
+		<div class="names">
+			<span style="display: block" class="<%= 'ordered_by_this' if set_order_class?('local_name') %>"><a href="<%= movie_path(movie.id) %>" target="_blank"><%= movie.local_name %></a></span>
+			<div class="imdb_rating_container">
+				<%= render 'schedules/imdb_rating', movie: movie %>
+			</div>
+			<span style="display: block" class="<%= 'ordered_by_this' if set_order_class?('original_name') %>"><%= movie.original_name %></span>
+			Realizado por: <%= movie.director %>
+			<%= render 'schedules/progress_or_actors', schedule: schedule, movie: movie %>
+		</div>
+	</div>
+
+	<% if movie.youtube_full_url.present? %>
+	  <%= render "layouts/youtube", movie: movie %>
+	<% end %>
+
+	<% if movie.actors.any? %>
+	  <%= render "layouts/actors_of_movie", movie: movie %>
+	<% end %>
+
+</li>

@@ -1,0 +1,9 @@
+<% actors_display = (schedule.blank? || !schedule.is_currently_on_air?) ? "block" : "none" %>
+<% progress_display = (schedule.blank? || !schedule.is_currently_on_air?) ? "none" : "block" %>
+<div class="schedule_item_actors" style="display: <%= actors_display %>;">Interpretado por: <%= movie.actors.map {|a| link_to "#{a.name}", actor_path(a), target: "_blank"}.join(", ").html_safe %>
+</div>
+<% if schedule.present? && (schedule.is_currently_on_air? || schedule.is_future?) %>
+<div id="schedule_progress_bar_<%= schedule.id %>" style="display: none">
+	<%= render "item_progress_bar", schedule: schedule %>
+</div>
+<% end %>

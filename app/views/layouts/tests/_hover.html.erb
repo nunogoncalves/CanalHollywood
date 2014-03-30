@@ -1,0 +1,116 @@
+<!-- http://tympanus.net/codrops/2011/11/02/original-hover-effects-with-css3/ -->
+
+<style>
+.view {
+    width: 120px;
+    height: 95px;
+    margin: 10px;
+    float: left;
+    border: 10px solid #fff;
+    /*overflow: hidden;*/
+    position: relative;
+    text-align: center;
+    box-shadow: 1px 1px 2px #e6e6e6;
+    cursor: default;
+    background: #fff url(http://tympanus.net/Tutorials/OriginalHoverEffects/images/bgimg.jpg) no-repeat center center
+}
+
+.view-first img { 
+    transition: all 0.2s linear;
+}
+.view-first .mask {
+    opacity: 0;
+    background: url(http://multicanaltv.com/images/hollywoodpt/prg/101889_0.jpg);
+    background-color: rgba(219,127,8, 0.7); 
+    transition: all 0.4s ease-in-out;
+}
+.view-first h2 {
+    transform: translateY(-100px);
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+}
+.view-first p { 
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.2s linear;
+}
+.view-first a.info{
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+    width: 300px;
+}
+
+.view-first:hover img { 
+    transform: scale(1.1);
+} 
+.view-first:hover .mask { 
+    opacity: 1;
+}
+.view-first:hover h2,
+.view-first:hover p,
+.view-first:hover a.info {
+    opacity: 1;
+    transform: translateY(0px);
+}
+.view-first:hover p {
+    transition-delay: 0.1s;
+}
+.view-first:hover a.info {
+    transition-delay: 0.2s;
+}
+
+.view .mask, .view .content {
+    width: 300px;
+    height: 200px;
+    position: absolute;
+    overflow: hidden;
+    top: -65px;
+    left: -95px;
+}
+.view img {
+    display: block;
+    position: relative
+}
+.view h2 {
+    text-transform: uppercase;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    font-size: 17px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    margin: 20px 0 0 0
+}
+.view p {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 12px;
+    position: relative;
+    color: #fff;
+    padding: 10px 20px 20px;
+    text-align: center
+}
+.view a.info {
+    display: inline-block;
+    text-decoration: none;
+    padding: 7px 14px;
+    background: #000;
+    color: #fff;
+    text-transform: uppercase;
+    box-shadow: 0 0 1px #000
+}
+.view a.info:hover {
+    box-shadow: 0 0 5px #000
+}	
+</style>
+
+<div style="width: 300px; display: block; margin-left: auto; margin-right: auto; margin-top: 100px">
+	<div class="view view-first">  
+   <img src="http://multicanaltv.com/images/hollywoodpt/prg/th/101889_0.jpg" />  
+   <div class="mask">  
+	   <h2>Harry Potter And The Sorcerer's Stone </h2>  
+	   <p style="background: rgba(0, 0, 0, 0.8)">Salvo da negligência dos seus tios, Harry, um jovem rapaz com um grande destino é admitido na escola Hogwarts, uma escola de magia, onde se irá evidenciar e tornar-se um grande mágico.</p>  
+     <a href="#" class="info">Read More</a>  
+    </div>  
+	</div>  
+</div>

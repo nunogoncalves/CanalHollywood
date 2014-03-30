@@ -1,0 +1,10 @@
+<% next_day = next_day_text(date) %>
+<% prev_day = previous_day_text(date) %>
+
+<div class="white" style="width: auto">
+	<span id="ola_eu_sou_um_span"><a class="label label-warning glyphicon glyphicon-chevron-left" href="?date=<%= prev_day %>"><%= prev_day %></a></span>
+	<span class="label label-primary" style="font-size: 17px"><%= current_date_formatted(@date) %></span>
+	<span><a class="label label-success glyphicon glyphicon-chevron-right" href="?date=<%= next_day %>"><%= next_day %></a></span>
+</div>
+
+</br>

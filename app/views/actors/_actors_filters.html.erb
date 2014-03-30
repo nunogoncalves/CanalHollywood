@@ -1,0 +1,34 @@
+<div class="white" style="display: inline-block; text-align: center; width: 100%">
+
+	<span class="myBadge btn-primary">
+	  Idade
+	  <a class="<%= 'selectedFilter' if @order == 'birth_date asc' %> badge glyphicon glyphicon-chevron-down" href="<%= actors_path(order: "birth_date asc", q: @q, starts_with: @starts_with) %>"> </a>
+	  <a class="<%= 'selectedFilter' if @order == 'birth_date desc' %> badge glyphicon glyphicon-chevron-up" href="<%= actors_path(order: "birth_date desc", q: @q, starts_with: @starts_with) %>"> </a>
+	</span>
+
+	<span class="myBadge btn-primary">
+	  Nome
+	  <a class="<%= 'selectedFilter' if @order == 'name asc' %> badge glyphicon glyphicon-sort-by-alphabet" href="<%= actors_path(order: "name asc", q: @q, starts_with: @starts_with) %>"> </a>
+	  <a class="<%= 'selectedFilter' if @order == 'name desc' %> badge glyphicon glyphicon-sort-by-alphabet-alt" href="<%= actors_path(order: "name desc", q: @q, starts_with: @starts_with) %>"> </a>
+	</span>
+
+	<span class="myBadge btn-primary">
+	  Filmes Canal Hollywood
+	  <a class="<%= 'selectedFilter' if @order == 'movies_count desc' %> badge glyphicon glyphicon-sort-by-attributes-alt" href="<%= actors_path(order: "movies_count desc", q: @q, starts_with: @starts_with) %>"> </a>
+	  <a class="<%= 'selectedFilter' if @order == 'movies_count asc' %> badge glyphicon glyphicon-sort-by-attributes" href="<%= actors_path(order: "movies_count asc", q: @q, starts_with: @starts_with) %>"> </a>
+	</span>
+
+	<span class="myBadge btn-primary">
+	  Data de adição
+	  <a class="<%= 'selectedFilter' if @order == 'id desc' %> badge glyphicon glyphicon-sort-by-order-alt" href="<%= actors_path(order: "id desc", q: @q, starts_with: @starts_with) %>"> </a>
+	  <a class="<%= 'selectedFilter' if @order == 'id asc' %> badge glyphicon glyphicon-sort-by-order" href="<%= actors_path(order: "id asc", q: @q, starts_with: @starts_with) %>"> </a>
+	</span>
+
+	<div>
+		<%= search_form_for @search do |f| %>
+		<%= f.text_field :name_cont, placeholder: "Nome", style: "width: 90px" %>
+		<button><% f.submit "Procurar" %>Procurar</button>
+<% end %>
+	</div>
+
+</div>

@@ -1,0 +1,46 @@
+<% @actors.each do |actor| %>
+	<div style="margin-top: 5px;">
+		<div style="display: inline-block; width: 150px; text-align: center;">
+		  <div style="background: #428bca; margin-top: 3px; border-radius: 4px;">
+		    <a href="<%= edit_actor_path(actor) %>" target="_blank" class="white" style="height: 46px; text-decoration: none;"><%= actor.name %></a>
+		    <div>
+		      <span class="badge pull-right glyphicon glyphicon-gift" style="color: #428bca; background-color: #ffffff; float: none !important;"><%= actor.display_age %></span>
+		      <span class="badge pull-right glyphicon glyphicon-film" style="color: #428bca; background-color: #ffffff; float: none !important;"><%= actor.movies_count %></span>
+	      </div>
+		  </div>
+			<%= image_tag actor.display_image, style: "width: 150px; border-radius: 50px;", onerror: "this.src='/assets/no_image.jpg'" %>
+		</div>
+
+		<div style="display: inline-block; max-width: 990px; margin-left: 1px; overflow-x: scroll; overflow-y: hidden; white-space:nowrap;">
+			<% actor.movies.each do |m| %> 
+				<div style="display: inline-block; width: 97px">
+					<div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+						<%= link_to(m.original_name, movie_path(m)) %></br>
+					</div>
+					<a href="<%= movie_path(m) %>" title="<%= m.original_name %>"><img src="<%= m.small_image_display %>" onerror="this.src='/assets/no_image.jpg'"></a>
+				</div>
+			<% end %>
+		</div>
+		<div style="height: 1px; background: white; margin-top: 2px;"></div>
+	</div>
+<% end %>
+
+<% if @actors.respond_to?(:current_page) %>
+	<% current_page = @actors.current_page %>
+	<% next_page = current_page + 1 %>
+	<% if next_page <= @actors.total_pages %>
+		<div id="load_more_results_<%= next_page %>" style="position: relative; cursor: pointer;border-radius: 3px;text-align: center;border: 1px dashed #acacac;padding: 20px 10px;display: block;background: #144079;margin: 0 12px;"> 
+    	<div class="white load_more_results_<%= current_page %>" onclick="return seeMoreResults('<%= "#{actors_path(page: next_page, order: @order, q: @q, starts_with: @starts_with)}" %>')">Carregar página <%= "#{(current_page + 1)}/#{@actors.total_pages}"%> de actores</div>
+	  </div>
+	<% end %>
+
+	<script>
+		function seeMoreResults(url) {
+			$.ajax({
+	      type: 'GET',
+	      url: url,
+	      dataType: "script"
+	    });
+		}
+	</script>
+<% end %>

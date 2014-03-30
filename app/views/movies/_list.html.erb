@@ -1,0 +1,25 @@
+<% @searcher.movies.each do |movie| %>
+	<%= render "schedules/item", movie: movie %>
+<% end %>
+
+<%= render "layouts/imdb_rating_plugin" %>
+
+<% if @searcher.movies.respond_to?(:current_page) %>
+	<% current_page = @searcher.movies.current_page %>
+	<% next_page = current_page + 1 %>
+	<% if next_page <= @searcher.movies.total_pages %>
+    	<div id="load_more_results_<%= next_page %>" style="position: relative; cursor: pointer;border-radius: 3px;text-align: center;border: 1px dashed #acacac;padding: 20px 10px;display: block;background: #144079;margin: 0 12px;"> 
+	    	<div class="white load_more_results_<%= current_page %>" onclick="return seeMoreResults('<%= "#{movies_path(page: next_page, query: @searcher.query, order: @searcher.order)}" %>')">Carregar página <%= "#{(current_page + 1)}/#{@searcher.movies.total_pages}"%> de filmes</div>
+	  </div>
+	<% end %>
+
+	<script>
+		function seeMoreResults(url) {
+			$.ajax({
+	      type: 'GET',
+	      url: url,
+	      dataType: "script"
+	    });
+		}
+	</script>
+<% end %>

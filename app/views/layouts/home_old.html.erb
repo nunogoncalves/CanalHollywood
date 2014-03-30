@@ -1,0 +1,13 @@
+<a style:"left: 10px" href="?date=<%= (@current_date - 1.days).strftime("%Y-%m-%d") %>"><%= (@current_date - 1.days).strftime("%Y-%m-%d") %></a>
+<%= @current_date.strftime("%Y-%m-%d") %>
+<a style:"left: 10px" href="?date=<%= (@current_date + 1.days).strftime("%Y-%m-%d") %>"><%= (@current_date + 1.days).strftime("%Y-%m-%d") %></a>
+
+<div class="schedule_of_day_container">
+	<%# Movie.limit(1).each do |movie| %>
+	<% @day_schedule.each do |schedule| %>
+		<%= render "schedules/item", schedule: schedule %>
+	<% end %>
+</div>
+
+<div style="width: 100px; height: 100px; background-color: red; display: inline-block"></div>
+<div style="width: 100px; height: 100px; background-color: green; display: inline-block"></div>

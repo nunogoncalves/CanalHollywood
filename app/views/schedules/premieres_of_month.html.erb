@@ -1,0 +1,10 @@
+<div style="width: 100%">
+	<%= render 'month_navigator', date: @current_date %>
+	<ul class="schedule_of_day_container">
+		<div class="white"><%= "#{@movies.count} Estreias no canal hollywood em #{I18n.l(@date, format: "%B de %Y")}" %></div>
+		<% @movies.each do |movie| %>
+			<%= render "schedules/item", movie: movie %>
+		<% end %>
+	</ul>
+	<%= link_to "#", movies_path, style: "display: none", id: "new_date_query" %>
+</div>

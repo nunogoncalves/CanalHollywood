@@ -1,0 +1,55 @@
+<div style="text-align: center">
+	<%= render 'movie_show_navigation' %>
+</div>
+
+<div style="text-align: center">
+	<img src="/assets/program_file.png" alt="">
+	<a href="http://canalhollywood.pt/<%= @movie.canal_hollywood_url %>" target="_blank"><img src="/assets/hollywood_icon.jpg" style="height: 29px"></a>
+	<% if @movie.imdb_url.present? %>
+		<a href="<%= @movie.imdb_full_url %>"><img src="/assets/imdb_big.png" style="height: 29px"></a>
+	<% end %>
+</div>
+
+<div class="white">
+	<div style="display: inline-block;  width: 337px; height: 256px; background-image: url('/assets/big_movie_image_background.png'); background-repeat: no-repeat; padding: 10px 0px 0px 10px; clear:right;">
+		<img style="vertical-align: text-bottom; height: 240px" src="<%= @movie.big_image_display%>" onerror="this.src='/assets/no_image.jpg'">
+	</div>
+
+	<div style="display: inline-block; max-width: 850px; margin-left: 1px; overflow-x: scroll; overflow-y: hidden; white-space:nowrap;width: 100%; background-size: 80px 60px; background: url(/assets/actors_group.png);">
+		<% @movie.actors.each do |a| %> 
+			<div style="display: inline-block;">
+				<div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+					<%= link_to(a.name, actor_path(a)) %></br>
+				</div>
+				<a href="<%= actor_path(a) %>" title="<%= a.name %>"><img src="<%= a.display_image %>" style="height: 240px"></a>
+			</div>
+		<% end %>
+	</div>
+</div>
+
+<div class="white" style="position: relative">
+	<div style="display: inline-block; width: 336px">
+		<h1 style="font-size: 18px; color: #09F; font-weight: bold;">
+			<%= "#{@movie.original_name} - #{@movie.local_name}" %></br>
+			Estreia no Canal Hollywood </br> <%= @movie.premiere_formatted %>
+		</h1>
+
+		<div style="color: #666;"><strong>Título Original: </strong><%= @movie.original_name %></div>
+		<div style="text-align: justify;"><%= @movie.description %></div>
+		<div><strong>Ano de estreia: </strong><%= @movie.year %></div>
+		<div><strong>Realizador: </strong><%= @movie.director %></div>
+		<div><strong>Título género: </strong><%= @movie.genre %></div>
+		<div><strong>Passou no canal Hollywood: </strong><%= pluralize(@movie.schedules_count, "vez", "vezes") %></div>
+	</div>
+	<div style="display: inline-block; max-width: 290px; position: absolute; top: 26px; margin-left: 30px">
+		<span><h2>Passou no canal Hollywood</h2></span>
+		<% @movie.schedules.order("start_date_time desc").each do |schedule| %>
+			<% background = schedule.is_future? ? "green" : "red" %>
+			<div style="background: <%= background %>; width: 10px; height: 10px; display: inline-block;"></div><%= link_to "#{schedule.display_date_time}", of_day_schedules_path(date: schedule.formatted_date)  %></br>
+		<% end %>
+	</div>
+	<div style="display: inline-block; position: absolute; top: 26px; margin-left: 325px">
+		<%= render "layouts/youtube", movie: @movie %>
+	</div>
+</div>
+

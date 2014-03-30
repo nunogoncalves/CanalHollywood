@@ -1,0 +1,32 @@
+<div class="movie_list_item_main_container">
+	<div class="movie_list_item_image_container">
+		<% if movie.small_image_url.present? %>
+			<img src=" <%= movie.small_image_url %>"></img>
+		<% else %>
+			<img class="no_image_yet" style="display: block; margin: auto; position: absolute; top: 0; left: 0; bottom: 0; right: 0; max-height: 90px" src="http://png-3.findicons.com/files/icons/2257/berlin/32/refresh.png" onclick="$.movies.refreshMovie(this, '<%= movie.id %>')"></img>
+		<% end %>
+	</div>
+	<div class="movie_list_item_year_genre"><%=  "#{movie.year} - #{movie.genre}" %> </div>
+		<div class="movie_list_item_premiere">Data de estreia: <%= movie.premiere %> </div>
+	<div style="position: absolute; left: 115px; top: 28px; width: 294px; height: 77px;">
+		<div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+			<span style="font-size: 18px; color: #000; font-weight: bold;"><%= movie.local_name %></span></br>
+		</div>
+		<div style="margin-top: 22px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+			<span style="font-size: 18px; color: #000; font-weight: bold;"><%= movie.original_name %></span></br>
+		</div>
+	</div>
+	<div style="position: absolute; left: 410px; top: 23px; width: 244px; height: 86px;">
+		<% if movie.imdb_url.present? %>
+			<div style="position: absolute; top: 2px"><a href="<%= movie.imdb_url %>" target="_blank"><img src="http://www.lesawilson.com/wp-content/uploads/2012/07/imdb-icon.jpg" style="height: 79px"></a></div>
+		<% end %>
+		<% if movie.youtube_full_url.present? %>
+			<div style="position: absolute; left: 79px;"><a><img src="http://www.spiritsamara21.com/wp-content/uploads/2013/10/icon-youtube.png" style="height: 80px" onclick="$.movies.toggleYoutube('<%= movie.id %>');"></a></div>
+		<% end %>
+		<div style="position: absolute; left: 150px; top: -7px"><a href="/movies/<%= movie.id %>"><img style="height: 95px;" src="http://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Information_grey.svg/256px-Information_grey.svg.png"></a></div>
+	</div>
+
+	<% if movie.youtube_full_url.present? %>
+	  <%= render "layouts/youtube", movie: movie %>
+	<% end %>
+</div>

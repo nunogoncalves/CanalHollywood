@@ -1,0 +1,35 @@
+<ul>
+		<li class="white">
+			<a href="<%= edit_movie_path(movie.id) %>" class="white glyphicon glyphicon-edit" target="_blank"></a>
+			<span class="<%= 'ordered_by_this' if set_order_class?('schedules_count') %>">(<%= movie.schedules.count %>x)</span>
+		</li>
+		<li>
+			<span class="<%= 'ordered_by_this' if set_order_class?('year') %>"><%= "#{movie.year}" %></span> <span> <%= " - #{movie.genre}" %><span>
+		</li>
+		<% if schedule.blank? && movie.has_future_schedule? %>
+		<li>
+			<img src="/assets/green_ball.png" style="margin-top: -3px;">
+		</li>
+		<% end %>
+		<% if schedule %>
+			<li class="right"><span><%= schedule.start_and_end_hours %><span></li>
+		<% else %>
+			<li class="right <%= 'ordered_by_this' if set_order_class?('canal_hollywood_premiere') %>">
+				<span>Estreia: <%= movie.premiere_mini_formatted %><span>
+			</li>
+		<% end %>
+		
+		<% if movie.actors.present? %>
+			<li class="right white <%= 'ordered_by_this' if set_order_class?('actors_count') %>">
+				<img src="/assets/small_actor_icon.png" alt="" onclick="$.movies.toggleActors('<%= movie.id %>');">x<%= movie.actors_count %>
+			</li>
+		<% end %>
+		<% if movie.youtube_full_url.present? %>
+			<li class="right youtube">
+				<img src="/assets/youtube_small_icon.gif" onclick="$.movies.toggleYoutube('<%= movie.id %>');">
+			</li>
+		<% end %>
+			<li class="right imdb">
+				<a href="http://canalhollywood.pt<%= movie.canal_hollywood_url %>" target="blank"><img src="/assets/hollywood_icon.jpg"></a>
+			</li>
+	</ul>

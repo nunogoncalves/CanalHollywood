@@ -1,0 +1,40 @@
+<% presenter = Movies::TopBarPresenter.new %>
+
+<div class="header_stats white">
+	<table>
+		<tr>
+			<td><%= "#{presenter.youtube_text}" %><img src="/assets/youtube_big.png"></td>
+			<td><%= "#{presenter.imdb_text}" %><img src="/assets/imdb_big.png"></td>
+			<td><%= "#{presenter.with_actors_text}" %><img src="/assets/big_actors.png"></td>
+			<td><%= "#{presenter.directed_text}" %><img src="/assets/big_director.jpg"></td>
+			<td><%= presenter.genres.count %> Géneros<img src="/assets/big_drama.png"></td>
+			<td><span>Pesquisas</span><img src="/assets/big_search.png"></td>
+		</tr>
+		<tr>
+			<td><a href="<%= movies_path(query: 'no_youtube') %>">Filmes sem youtube</a></td>
+			<td><a href="<%= movies_path(query: 'no_imdb') %>">Filmes sem imdb</a></td>
+			<td><a href="<%= movies_path(query: 'no_actors') %>">Filmes sem actores</a></td>
+			<td><a href="<%= movies_path(query: 'no_director') %>">Filmes sem realizador</a></td>
+			<td><%= render 'movies/select_genre_form', presenter: presenter %></td>
+			<td><%= render 'movies/search_movie_form' %></td>
+		</tr>
+	</table>
+</div>
+
+<script>
+	$(".select2").select2().on('change', function() {
+		$("#genre_link").attr("href", "/movies?query=genre&genre=" + this.value);
+		$("#genre_link")[0].click();
+	});
+
+	var nextImage = {
+		"/assets/big_sort_asc.png": "/assets/big_sort_desc.png",
+		"/assets/big_sort_desc.png": "/assets/big_sort_asc.png"
+	}
+
+	function sortOrderClicked(element) {
+		var $this = $(element);
+		var src = $this.attr("src");
+		$this.attr("src", nextImage[src])
+	}
+</script>

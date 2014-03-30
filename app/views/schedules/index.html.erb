@@ -1,0 +1,54 @@
+<style>
+	.schedule_of_day_outter {
+		width: 100%; 
+		text-align: center;
+		height: 100%;
+		/*position: fixed;*/
+	}
+
+	.schedule_of_day_inner {
+		display: inline-block;
+		vertical-align: top;
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+		width: calc((100% - 657px)/2);
+	}
+
+	.list {
+		width: 651px;
+	}
+
+</style>
+
+<div style="display: inline-block; width: 651px; margin-left: 287px; margin-right:auto; overflow-x: scroll; overflow-y: hidden; white-space:nowrap;">
+	<% @day_schedule.each do |s| %>
+		<img src="http://multicanaltv.com/images/hollywoodpt/poster/th/<%= s.movie.canal_hollywood_id %>.jpg" onerror="$(this).remove();">
+	<% end %>
+</div>
+
+<div style="text-align: center">
+	<%= render "day_navigator", date: @current_date %>
+</div>
+
+<div class="schedule_of_day_outter">
+
+	<div id="calendar_container" class="schedule_of_day_inner">
+		<div id="datetimepicker" style="display: inline-block;"></div>
+		<div><img src="http://multicanaltv.com/images/hollywoodpt/poster/th/<%= Movie.current_movie.canal_hollywood_id %>.jpg" alt=""></div>
+	</div>
+	<div class="schedule_of_day_inner list">
+		<%= render 'day' %>
+	</div>
+	<div class="schedule_of_day_inner">
+		<%= render "layouts/calendar_of_day", date: @current_date %>
+	</div>
+
+</div>
+
+<script>
+	$(function () {
+		$.schedulers.init('<%= get_zero_based_date_str(@current_date) %>');
+	});
+
+</script>

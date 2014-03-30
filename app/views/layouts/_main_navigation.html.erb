@@ -1,0 +1,40 @@
+<% now = DateTime.now %>
+<% now_schedule = Schedule.where("start_date_time < ? AND end_date_time > ?", now, now).first %>
+<% current_movie_id =  now_schedule.movie_id %>
+<% movie = Movie.find(current_movie_id) %>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <%= image_tag "/assets/canal_hollywood_logo.png", style: "height: 50px" %>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+      <li><%= link_to "Início", root_path %></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Filmes (<%= Movie.all.count %>)<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+        	<li><%= link_to "Todos", movies_path %></li>
+          <li class="divider"></li>
+          <li><%= link_to "Programações", of_day_schedules_path %></li>
+        	<li><%= link_to "Dos últimos 7 dias", last_seven_days_movies_path %></li>
+					<li><%= link_to "Estreias", premieres_of_month_schedules_path %></li>
+					<li><%= link_to "Todos por mês", all_of_month_movies_path %></li>
+        </ul>
+      </li>
+      <li><%= link_to "Actores (#{Actor.all.count})", actors_path %></li>
+			<li><%= link_to "Estatísticas", statistics_path %></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><%= link_to "Testes HTML", html_tests_path %></li>
+    </ul>
+		<marquee id="on_air_marqee_element" data-movie_id="<%= now_schedule.id %>" class="white" style="width: 150px; margin-top: 16px">Agora no ar: <%= movie.original_name %></marquee>
+  </div><!-- /.navbar-collapse -->
+</nav>

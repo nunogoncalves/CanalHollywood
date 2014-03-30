@@ -1,0 +1,37 @@
+<% next_day = next_day_text(@current_date) %>
+<% prev_day = previous_day_text(@current_date) %>
+
+<%= render "layouts/top_queries" %>
+
+<div>
+	<div id="datetimepicker" style="width: 166px; display: inline-block"></div>
+	<div style="display: inline-block">
+	</div>
+</div>
+
+<div class="day_scheduler_navigator white">
+	<a href="?date=<%= prev_day %>"><%= prev_day %></a>
+	<%= current_date_formatted(@current_date) %>
+	<a href="?date=<%= next_day %>"><%= next_day %></a>
+</div>
+
+<ul class="schedule_of_day_container">
+	<% @day_schedule.each do |schedule| %>
+		<%= render "schedules/item", schedule: schedule, movie: schedule.movie %>
+	<% end %>
+</ul>
+<%= link_to "#", movies_path, style: "display: none", id: "new_date_query" %>
+
+<script>
+	var picker = $("#datetimepicker").datepick({
+		defaultDate: new Date('<%= get_zero_based_date_str(@current_date) %>'),
+
+		onSelect: function(dates) { 
+			var date = dates[0];
+			var dateStr = "" + date.getFullYear() +"-" + (date.getMonth() + 1) + "-" + date.getDate();
+			$("#new_date_query").attr("href", "/schedules/of_day?date=" + dateStr);
+			$("#new_date_query")[0].click();
+		}, 
+	});
+
+</script>

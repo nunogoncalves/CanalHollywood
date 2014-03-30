@@ -1,0 +1,27 @@
+<script>
+	$(function() {
+		<% n = DateTime.now %>
+		<% two_ago = DateTime.now - 2.hours %>
+		rotateHour("#hour_end", <%= (n.hour * 60) + n.min %>);
+		rotateHour("#hour_start", <%= (two_ago.hour * 60) + two_ago.min %>);
+	});
+</script>
+
+<script>
+	var minInDay = 720;
+
+	function rotateHour(element, minutes) {
+		var x = convertMinutesInDegrees(minutes);
+		console.log(x)
+		$(element).css("-webkit-transform", "rotate(" + x + "deg)")
+	};	
+
+	function convertMinutesInDegrees(minutes) {
+		var _min = minutes;
+		if (minutes > minInDay) {
+			_min = minutes - minInDay
+		}
+
+		return _min * 360 / 720
+	};
+</script>

@@ -1,0 +1,39 @@
+<div class="form_container white">
+Participou em <%= @actor.movies_count %> filmes no canal hollywood.
+<%= simple_form_for @actor do |f| %>
+	<div class="field">Nome:</div><%= f.input_field :name %> <%= f.error :name %></br>
+	<div class="field"><a href="<%= f.object.try(:imdb_search_url) %>" target="_blank">IMDB:</a></div><%= f.input_field :imdb_url %></br>
+	<div class="field">Imagem:</div><%= f.input_field :image %></br>
+	<div class="field">Data de nascimento:</div><%= f.input_field :birth_date, as: :string, input_html: {class: "date_picker"} %></br>
+	<div class="field">Falecido:</div><%= f.input_field :deceased, as: :boolean %></br>
+	<div class="field">Data de falicimento:</div><%= f.input_field :date_of_death, as: :string, input_html: {class: "date_picker"} %></br>
+	<%= f.association :movies, label_method: :original_name, input_html: {id: "actor_movies", class: "select2"}%>
+	<%#= f.input :movies, :collection => Proc.new{ Movie.all.map{ |m| [m.original_name, m.id, :data_x => "#{m.small_image_url}"] } } %>
+	<%#= f.input :movies, :collection => Proc.new{ Movie.all.map{ |m| [m.original_name, m.id, "data-img" => m.small_image_url] } } %>
+
+	<%= f.submit("Gravar") %>
+<% end %>
+
+</div>
+
+<% if !@actor.new_record? %>
+<div style="display: inline-block; vertical-align: top; margin-top: 17px">
+  <%= image_tag @actor.display_image, style: "height: 175px;" %>
+</div>
+<% end %>
+
+<script>
+	$(document).ready(function() {
+    $("#actor_movies").select2({
+      // formatResult: format,
+      // formatSelection: format,
+      // escapeMarkup: function(markup) { return markup; }
+    });
+  });
+
+  // function format(movie) {
+  	// if (movie.text != undefined) {
+  	//   return "<img style='height: 25px' src='" + $(movie.element).data('img') + "'/>" + movie.text;
+  	// }
+  // }
+</script>

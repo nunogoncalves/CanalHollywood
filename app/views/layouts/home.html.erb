@@ -1,0 +1,60 @@
+<div class="white home_container">
+	<div>
+		<div class="inner_container">
+			<img src="http://ih.constantcontact.com/fs154/1103508746841/img/816.png" alt="">
+			<h1>Número de Filmes: <%= Movie.all.count %></h1>
+		</div>
+	</div>
+
+	<div>
+		<div class="inner_container">
+			<img src="/assets/big_actors_female.png" alt="">
+			<h1>Actores: <%= Actor.all.count %></h1>
+		</div>
+	</div>
+
+	<div>
+		<div class="inner_container">
+			<img src="http://th01.deviantart.net/fs70/PRE/i/2010/333/9/3/vlc_movie_icon_by_captainego-d33vh70.png" alt="">
+			<h1>Passaram: <%= Schedule.all.count %></h1>
+		</div>
+	</div>
+
+	<div>
+		<div class="inner_container">
+			<img src="https://cdn1.iconfinder.com/data/icons/customicondesignoffice5/256/schedule.png" alt="">
+			<h1>Desde: <%= Schedule.order("start_date_time asc").first.premiere_format %></h1>
+		</div>
+	</div>
+
+	<div>
+		<div class="inner_container">
+			<iframe id="canal_hollywood_streaming" src="http://www.televisaofutebol.com/iframe.php?chname=hollywood&amp;height=500&amp;width=650&amp;autostart=true" marginheight="0" marginwidth="0" align="bottom" frameborder="0" scrolling="no" height="500" width="650"></iframe>
+		</div>
+	</div>
+</div>
+	
+</div>
+
+
+<script>
+	function load(element) {
+		var $el = $(element);
+		$("#values").append($el.attr("src") + "</br>");
+	}
+	function error(element) {
+		var $el = $(element);
+		$el.remove();
+	}
+</script>
+<div class="white" id="values">
+	<div>
+	<%#= render 'layouts/images_urls' %>
+	 </div>
+</div>
+
+<div>
+	<%# (102445..105000).each do |x| %>
+	<!-- <img style="witdh: 110px; height: 75px"src="http://multicanaltv.com/images/hollywoodpt/prg/th/<%#="#{x}"%>_0.jpg" onload= "load(this)"; onerror="error(this);" /> -->
+	<%# end %>
+</div>

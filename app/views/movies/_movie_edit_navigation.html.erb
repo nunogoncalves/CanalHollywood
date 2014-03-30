@@ -1,0 +1,17 @@
+<%# "http://todc.github.io/todc-bootstrap/components/" %>
+<% first_movie = Movie.order("id asc").limit(1).first %>
+<% last_movie = Movie.order("id desc").limit(1).first %>
+
+<a href="<%= edit_movie_path(1) %>" class="btn btn-primary"><i class="glyphicon glyphicon-fast-backward"></i><%= first_movie.original_name %></a>
+<a href="<%= edit_movie_path(@movie.previous_movie_id) %>" class="btn btn-primary"><i class="glyphicon glyphicon-step-backward"></i><%= @movie.previous_movie.original_name %></a>
+
+<a href="http://canalhollywood.pt/<%= @movie.canal_hollywood_url %>" target="_blank"><img src="/assets/hollywood_icon.jpg" style="height: 35px"></a>
+
+<% if @movie.imdb_url.present? %>
+		<a href="<%= @movie.imdb_full_url %>" target="_blank"><img src="/assets/imdb_big.png" style="height: 35px"></a>
+	<% end %>
+
+<a href="<%= edit_movie_path(@movie.next_movie_id) %>" class="btn btn-primary"><i class="glyphicon glyphicon-step-forward"></i><%= @movie.next_movie.original_name %></a>
+<a href="<%= edit_movie_path(last_movie.id) %>" class="btn btn-primary"> <i class="glyphicon glyphicon-fast-forward"></i><%= last_movie.original_name %></a>
+
+</br>

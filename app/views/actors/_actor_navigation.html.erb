@@ -1,0 +1,13 @@
+<%# "http://todc.github.io/todc-bootstrap/components/" %>
+<% first_actor = Actor.order("id asc").limit(1).first %>
+<% last_actor = Actor.order("id desc").limit(1).first %>
+
+<a href="<%= actor_path(1) %>" class="btn btn-primary"><i class="glyphicon glyphicon-fast-backward"></i><%= first_actor.name %></a>
+<a href="<%= actor_path(@actor.previous_actor_id) %>" class="btn btn-primary"><i class="glyphicon glyphicon-step-backward"></i><%= @actor.previous_actor.name %></a>
+
+<a href="<%= edit_actor_path(@actor.id) %>" class="btn btn-success"><i class="glyphicon glyphicon-edit"></i><%= @actor.name %></a>
+
+<a href="<%= actor_path(@actor.next_actor_id) %>" class="btn btn-primary"><i class="glyphicon glyphicon-step-forward"></i><%= @actor.next_actor.name %></a>
+<a href="<%= actor_path(last_actor.id) %>" class="btn btn-primary"> <i class="glyphicon glyphicon-fast-forward"></i><%= last_actor.name %></a>
+
+</br>

@@ -1,0 +1,35 @@
+<div class="white" style="text-align: center">
+	<%= render 'actor_navigation' %>
+	<h1><%= @actor.name %></h1>
+</div>
+
+<div class="white" style="width: 100%; display: inline-block; text-align: center;">
+	<div style="display: inline-block; vertical-align: top">
+		<%= image_tag @actor.display_image, {style: "width: 220px; height: 320px"} %>
+	</div>
+	<div style="display: inline-block; text-align: left">
+		Nascimento: <%= @actor.display_birth_date %></br>
+		<% if @actor.display_age.present? %>
+			Idade: <%= @actor.display_age %></br>
+		<% end %>
+		<% if @actor.display_death_date.present? %>
+			Morte: <%= @actor.display_death_date %></br>
+		<% end %>
+		Filmes: <%= @actor.movies_count %></br>
+		<div style="display: inline-block; max-width: 850px; margin-left: 1px; overflow-x: scroll; overflow-y: hidden; white-space: nowrap;">
+		<% @actor.movies.each do |m| %> 
+			<div style="display: inline-block;">
+				<div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+					<%= link_to("#{m.original_name}(#{m.year})", movie_path(m)) %></br>
+				</div>
+				<a href="<%= movie_path(m) %>" title="<%= m.original_name %>"><img src="<%= m.big_image_display %>" style="height: 240px"></a>
+			</div>
+		<% end %>
+	</div>
+
+		<%# @actor.movies.each do |movie| %>
+		<%#= image_tag movie.small_image_display %>
+		<%#= link_to "#{movie.original_name} (#{movie.year})", movie_path(movie.id) %></br>
+		<%# end %>
+	</div>
+</div>

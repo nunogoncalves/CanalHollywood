@@ -1,0 +1,11 @@
+.form_container {
+	& .field {
+		width: 132px;
+		display: inline-block;
+	}
+	& .select2-container {
+		margin-left: 99px;
+		width: 272px;
+	}
+
+}

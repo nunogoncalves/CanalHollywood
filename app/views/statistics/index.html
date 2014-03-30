@@ -1,0 +1,42 @@
+<% presenter = @statistics_presenter %>
+<div id="general_stats_container" style="display: inline-block; vertical-align: top" class="white">
+	
+	Estatísticas
+
+	======================= FILMES ====================</br>
+	Número de filmes no total: <%= presenter.total_movies %></br>
+	Filmes com youtube: <%= @movies_with_youtube %></br>
+	Filmes com imdb: <%= @movies_with_imdb %></br>
+	Filmes com Actores: <%= presenter.movies_with_actors %></br>
+	Filme com mais Actores: <%= presenter.movie_with_most_actors.html_safe %></br>
+	Filme mais antigo: <%= presenter.oldest_movie.html_safe %> </br>
+	Filme mais recente: <%= presenter.newest_movie.html_safe %></br>
+	Média de estreias por mês: <%= presenter.average_month_premieres %></br>
+
+	======================== ACTORES ===================</br>
+	Número de actores no total: <%= presenter.total_actors %></br>
+	Actores sem idade: <%= presenter.actors_no_age %></br>
+	Actores sem filmes: <%= @actors_with_no_movies %></br>
+	Actores sem imdb: <%= presenter.actors_with_no_imdb %></br>
+	Actores sem foto: <%= presenter.actors_with_no_photo %></br>
+	Actores com mais filmes: <%= presenter.actor_with_most_movies.html_safe %></br>
+	Actor mais idoso: <%= presenter.oldest_actor %></br>
+	Actores desaparecidos: <%= presenter.deceased_actors %>
+</div>
+
+<div id="chart" style="width: 600px; display: inline-block;"></div>
+
+<% chart_data_array = Array.new(presenter.years.size) { Array.new(2) } %>
+<% presenter.years.each_with_index do |year, i| %>
+	<% chart_data_array[i] = [year, Movie.where(year: year).count] %>
+<% end %>
+
+<div>
+	<div id="moviesOfYearYear"></div>
+	<ul id="moviesOfYear" class="schedule_of_day_container">
+	</ul>
+</div>
+
+<script>
+	$.highcharts.stock_chart_init(<%= raw chart_data_array.to_json %>, "Filmes por ano");
+</script>

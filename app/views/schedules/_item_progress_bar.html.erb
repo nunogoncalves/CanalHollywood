@@ -1,0 +1,11 @@
+<% current_percentage = schedule.current_percentage %>
+<div class="progress progress-striped">
+	<div id="progress_div_<%= schedule.id %>" class="progress-bar"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: <%= current_percentage %>%">
+		<span id="span_percentage_<%= schedule.id %>"class="sr-onlys" style="color: black"><%= current_percentage %>% completo</span>
+	</div>
+</div>
+<script>
+	var start_time = <%= schedule.start_date_time.to_i * 1000 %>,
+			end_time = <%= schedule.end_date_time.to_i * 1000 %>;
+	$.schedulers.startMovieOnAirProgress('<%= schedule.id %>', start_time, end_time, '<%= schedule.movie.original_name %>');
+</script>

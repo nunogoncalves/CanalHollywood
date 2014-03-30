@@ -1,0 +1,57 @@
+<div style="width: 100%; text-align: center">
+  <div class="white">
+    <%= render 'movie_edit_navigation' %>
+
+    <h1><%= @movie.original_name %> - <%= @movie.year %></h1>
+
+    <div>
+      <div class="form_container">
+        <%= simple_form_for(@movie, html: {novalidate: true}) do |f| %>
+          <div>
+            <div class="field_outter"><div class="field">Título Português:</div><%= f.input_field :local_name %></div>
+            <div class="field_outter"><div class="field">Título Original:</div><%= f.input_field :original_name %></div>
+            <div class="field_outter"><div class="field">Género:</div><%= f.input_field :genre %></div>
+            <div class="field_outter"><div class="field">Url Imagem Pequena:</div><%= f.input_field :small_image_url %></div>
+            <div class="field_outter"><div class="field">Url Imagem Grande:</div><%= f.input_field :big_image_url %></div>
+            <div class="field_outter"><div class="field">Descrição:</div>
+              <%= f.input_field :description, as: :text, cols: 69, rows: 5 %>
+              <img src="/assets/refresh.png" onclick="refreshMovie(this);"style="position: absolute; margin-top: -33px; margin-left: 207px; width: 32px; height: 32px;">
+            </div>
+            <div class="field_outter"><div class="field"><a href="<%= @movie.search_youtube_url %>" target="_blank">Youtube:</a></div><%= f.input_field :youtube_url %></div>
+            <div class="field_outter"><div class="field"><a href="<%= @movie.search_imdb_url %>" target="_blank">IMDB:</a></div><%= f.input_field :imdb_url %></div>
+            <div class="field_outter"><div class="field">Realizador:</div><%= f.input_field :director %></div>
+            <div class="field_outter"><div class="field"><a href="http://canalhollywood.pt/<%= @movie.canal_hollywood_url %>" target="_blank">Canal hollywood:</a></div><%= f.input_field :canal_hollywood_url %></div>
+            <%= f.association :actors, label_method: :name_and_movies_count, input_html: { class: "select2"}, wrapper_html: {style: "height: 30px;" }%></br>
+          </div>
+          <%= f.submit "Guardar", class: "btn-primary", style: "margin-left: 132px; margin-top: 15px;" %>
+        <% end %>
+      </div>
+      
+      <div style="display: inline-block; vertical-align: top;">
+        <%= image_tag @movie.big_image_url, style: "width: 320px; height: 220px" %></br>
+        <%= link_to "Novo Actor", new_actor_path %>
+      </div></br>
+    </div>
+  </div>
+
+   <script>
+    $(document).ready(function() {
+      $(".select2").select2();
+    });
+
+    function refreshMovie(element) {
+      $(element).attr("src", "/assets/fancy_spinner.gif");
+    $.ajax({
+      dataType:"JSON",
+      url: "/movies/<%= @movie.id %>/refresh",
+      success: function(data, textStatus, jqXHR) {
+        $("#movie_description").val(data.description);
+        $(element).hide();
+      }, 
+      error: function(data, textStatus, jqXHR) {
+        $(element).attr("src", "/assets/refresh.png");
+      }
+    });
+  }
+  </script>
+</div>

@@ -1,0 +1,4 @@
+<%= simple_form_for "Movie" do |f| %>
+					<%= f.input :genre, options = {collection: ["id", "name"], label: false, input_html: {style: "width: 140px", class: 'select2', placeholder: "Seleccionar género"}} %>
+					<%= link_to "#", movies_path, style: "display: none", id: "genre_link" %>
+				<% end %>

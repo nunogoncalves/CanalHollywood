@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 1
+  channel_id: 1
+  original_name: MyString
+  local_name: MyString
+  year: MyString
+  director: MyString
+  description: MyString
+  genre: MyString
+  big_image_url: MyString
+  small_image_url: MyString
+  count: MyString
+  canal_hollywood_url: MyString
+
+two:
+  id: 1
+  channel_id: 1
+  original_name: MyString
+  local_name: MyString
+  year: MyString
+  director: MyString
+  description: MyString
+  genre: MyString
+  big_image_url: MyString
+  small_image_url: MyString
+  count: MyString
+  canal_hollywood_url: MyString
