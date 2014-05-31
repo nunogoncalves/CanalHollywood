@@ -9,7 +9,7 @@
 				<div id="actual_movie_image_element_<%= movie.id %>" style="position: absolute"><img src="<%= movie.small_image_display %>" onerror="this.src='/assets/no_image.jpg'"></div>
 				<%#= render "schedules/movie_image_with_info_on_hover", movie: movie %>
 				<% if movie.missing_information? %>
-					<div><img class="small_movie_image_info_missing" src="/assets/refresh.png" onclick="$.movies.refreshMovie('#actual_movie_image_element_<%= movie.id %>', '<%= movie.id %>')"></div>
+					<div><img class="small_movie_image_info_missing" src="/assets/refresh.png" onclick="$.movies.refreshMovie(this, '#actual_movie_image_element_<%= movie.id %>', '<%= movie.id %>')"></div>
 				<% end %>
 			</div>
 		</div>

@@ -33,7 +33,7 @@ $.movies = {
 		$el.hide();
 	},
 
-	refreshMovie: function(element, movieId) {
+	refreshMovie: function(refreshImageButton, element, movieId) {
 		var $el = $(element);
 		$el.find("img").attr("src", "/assets/fancy_spinner.gif");
 		$.ajax({
@@ -42,6 +42,7 @@ $.movies = {
 			success: function(data, textStatus, jqXHR) {
 				$el.find("img").attr("src", data.image);
 				$el.removeClass("no_image_yet");
+				$(refreshImageButton).remove();
 			}, 
 			error: function(data, textStatus, jqXHR) {
 				$el.attr("src", "/assets/refresh.png");

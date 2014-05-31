@@ -62,7 +62,7 @@ class Html::ParseMovie
 	end
 
 	def fetch_small_image_url
-		movie.big_image_url.sub!('hollywoodpt/prg/', 'hollywoodpt/prg/th/')
+		movie.big_image_url.sub('hollywoodpt/prg/', 'hollywoodpt/prg/th/')
 	end
 
 	def report_end

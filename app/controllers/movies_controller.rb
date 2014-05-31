@@ -18,7 +18,11 @@ class MoviesController < ApplicationController
 	end
 
 	def last_seven_days
-		@movies = Movie.where(id: Schedule.where(start_date_time: 7.days.ago..DateTime.now).pluck(:movie_id))
+		@movies = []
+		schedules = Schedule.where(start_date_time: 7.days.ago..DateTime.now).uniq.order("start_date_time desc")
+		schedules.each do |s|
+			@movies << s.movie
+		end
 	end
 
 	def show

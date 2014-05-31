@@ -33,7 +33,7 @@ class Movie < ActiveRecord::Base
   end
 
   def contains_all_information?
-  	description.present? && small_image_url.present? && director.present?
+  	description.present? && (small_image_url.present? && small_image_url != 'http://multicanaltv.com/images/hollywoodpt/sinimagen.jpg') && director.present?
   end
 
   def missing_information?
