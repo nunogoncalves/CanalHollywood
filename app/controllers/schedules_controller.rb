@@ -11,7 +11,7 @@ class SchedulesController < ApplicationController
     respond_to do |format|
       format.html
       format.js
-      format.json { 
+      format.json {
         render json: Schedules::ScheduleOfDaySerializer.new(@day_schedule).movies
       }
     end
@@ -24,11 +24,11 @@ class SchedulesController < ApplicationController
   end
 
   def premieres_of_day
-    
+
   end
 
   def premieres_of_year
-    
+
   end
 
   private
@@ -38,7 +38,7 @@ class SchedulesController < ApplicationController
       @date = DateTime.parse(params[:date])
     else
       @date = DateTime.now
-    end    
+    end
   end
 
 end

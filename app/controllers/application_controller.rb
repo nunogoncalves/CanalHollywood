@@ -21,8 +21,6 @@ class ApplicationController < ActionController::Base
     @current_date = date
   	@day_schedule = Schedule.schedules_of_day(date)
 
-
-
   	respond_to do |format|
         format.html { render "layouts/home"}
     end
