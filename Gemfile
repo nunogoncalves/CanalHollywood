@@ -1,9 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.12'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'rails', '3.2.18'
 
 gem 'pg'
 gem 'json', '1.8.0'
@@ -15,10 +12,15 @@ gem 'simple_form'
 gem 'ransack'
 gem "active_model_serializers"
 
+gem "pry", "0.9.12.6", group: [:development, :test]
+gem "pry-rails", "0.3.2", group: [:development, :test]
+gem 'jazz_hands', '0.5.2', group: [:development, :test]
 
-group :development do 
-	gem 'pry'
-	gem "pry-rails"
+group :test do
+  gem 'rspec-rails', '2.14.2'
+  gem 'rspec-mocks', '2.14.6'
+  gem 'database_cleaner', '1.2.0'
+  gem 'simplecov', '0.8.2', :require => false
+  gem "codeclimate-test-reporter", '0.3.0'
+  gem 'factory_girl_rails', '4.4.1'
 end
-
-gem 'quiet_assets', :group => :development

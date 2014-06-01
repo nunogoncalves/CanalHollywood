@@ -8,3 +8,11 @@ development:
   password: postgres
   template: template0
 
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: canal_hollywood_test
+  host: localhost
+  pool: 5
+  username: postgres
+  password: postgres
