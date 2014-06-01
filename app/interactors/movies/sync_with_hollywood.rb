@@ -32,7 +32,8 @@ class Movies::SyncWithHollywood
 		p "", "###############################################################################"
 		p "###############################################################################"
 		p "##################### - FROM: #{date_range.start_date} TO: #{date_range.end_date} - #####################"
-    p "############################# - Took #{DateTime.now.to_i - @report_start.to_i} seconds - #############################"
+		str = "Took #{DateTime.now.to_i - @report_start.to_i} seconds"
+		p "#{'#'*30} #{'%-2.2s' % str } #{'#'*30}"
 		p "###############################################################################"
 	end
 
@@ -61,7 +62,9 @@ class Movies::SyncWithHollywood
 			if movie.exists?
 				movie = Movie.find_by_canal_hollywood_url(movie.canal_hollywood_url)
 			else
-				p "############ #{i+1}/#{length} -> Checking movie #{movie.to_s} ############"
+				# p "############ #{i+1}/#{length} -> Checking movie #{movie.to_s} ############"
+				str = " #{i+1}/#{length} -> Checking movie #{movie.local_name.to_s}"
+				p "#{'#'*26}#{'%-50.50s' % str }#{'#'*26}"
 				Movies::FetchMovieCompleteInformation.new(movie).run
 			end
 			end_time = i == (@movies_list.count - 1) ? @begin_dates[i] + 120.minutes : @begin_dates[i+1]

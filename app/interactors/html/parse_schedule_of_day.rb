@@ -46,6 +46,7 @@ class Html::ParseScheduleOfDay
 	def end_report
 		p "######################### Took #{DateTime.now.to_i - report_start.to_i} seconds to fetch day #########################"
 		p "###############################################################################"
+		p ""
 	end
 
 	def get_html_page_document
@@ -61,12 +62,12 @@ class Html::ParseScheduleOfDay
 		Movie.new(
 			{
 				original_name: find_original_name_in_div(div),
-	    	local_name: find_local_name_in_div(div), 
+	    	local_name: find_local_name_in_div(div),
 	    	genre: find_genre_in_div(div),
 	    	small_image_url: find_img_in_div(div),
 	    	canal_hollywood_url: find_url_in_div(div),
 	    	channel_id: 0
-    	}, 
+    	},
     	without_protection: true)
 	end
 
@@ -100,10 +101,10 @@ class Html::ParseScheduleOfDay
 		local
 	end
 
-	def find_url_in_div(div) 
+	def find_url_in_div(div)
 		div.children[3].children[0]['href']
 	end
-  
+
   def find_img_in_div(div)
   	div.children[3].children[0].children[0]['src']
  	end

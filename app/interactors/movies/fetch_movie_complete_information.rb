@@ -3,7 +3,7 @@ class Movies::FetchMovieCompleteInformation
 	attr_accessor :movie
 
 	def initialize(movie)
-		@movie = movie	
+		@movie = movie
 	end
 
 	def run

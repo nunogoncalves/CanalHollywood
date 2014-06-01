@@ -23,4 +23,6 @@ group :test do
   gem 'simplecov', '0.8.2', :require => false
   gem "codeclimate-test-reporter", '0.3.0'
   gem 'factory_girl_rails', '4.4.1'
+  gem 'vcr', '2.9.2'
+  gem 'webmock', '1.18.0'
 end

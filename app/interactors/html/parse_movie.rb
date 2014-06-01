@@ -15,8 +15,8 @@ class Html::ParseMovie
 
 	def run
 		@report_start = DateTime.now
-		_print "######################## Parsing #{movie.original_name} ########################"
-
+		str = " Parsing #{movie.original_name}"
+		p "#{'#'*26}#{'%-50.50s' % str }#{'#'*26}"
 		@doc = get_html_page_document
 		inflate_movie
 		report_end
@@ -66,8 +66,9 @@ class Html::ParseMovie
 	end
 
 	def report_end
-		_print "######################### Took #{DateTime.now.to_i - report_start.to_i} seconds to fetch movie #########################"
-		_print "###############################################################################"
+		str = " Took #{DateTime.now.to_i - report_start.to_i} seconds to fetch movie"
+		p "#{'#'*26}#{'%-50.50s' % str }#{'#'*26}"
+		_print "#"*70
 	end
 
 	def _print(message)
