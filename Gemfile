@@ -11,6 +11,7 @@ gem 'kaminari'
 gem 'simple_form'
 gem 'ransack'
 gem "active_model_serializers"
+gem 'usecasing'
 
 gem "pry", "0.9.12.6", group: [:development, :test]
 gem "pry-rails", "0.3.2", group: [:development, :test]
@@ -24,5 +25,6 @@ group :test do
   gem "codeclimate-test-reporter", '0.3.0'
   gem 'factory_girl_rails', '4.4.1'
   gem 'vcr', '2.9.2'
-  gem 'webmock', '1.18.0'
+  # gem 'webmock', '1.18.0'
+  gem 'rake-progressbar', '0.0.5'
 end

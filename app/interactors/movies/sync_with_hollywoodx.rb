@@ -58,13 +58,14 @@ class Movies::SyncWithHollywood
 
 	def get_movies_full_information
 		length = @movies_list.count
+		bar = RakeProgressbar.new(length)
 		@movies_list.each_with_index do |movie, i|
+		 bar.inc
 			if movie.exists?
 				movie = Movie.find_by_canal_hollywood_url(movie.canal_hollywood_url)
 			else
-				# p "############ #{i+1}/#{length} -> Checking movie #{movie.to_s} ############"
 				str = " #{i+1}/#{length} -> Checking movie #{movie.local_name.to_s}"
-				p "#{'#'*26}#{'%-50.50s' % str }#{'#'*26}"
+				# p "#{'#'*26}#{'%-50.50s' % str }#{'#'*26}"
 				Movies::FetchMovieCompleteInformation.new(movie).run
 			end
 			end_time = i == (@movies_list.count - 1) ? @begin_dates[i] + 120.minutes : @begin_dates[i+1]
@@ -75,6 +76,7 @@ class Movies::SyncWithHollywood
 			end
 			movie.save
 		end
+		bar.finished
 	end
 
 end

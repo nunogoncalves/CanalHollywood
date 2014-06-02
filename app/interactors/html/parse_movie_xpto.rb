@@ -2,7 +2,7 @@ require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
 
-class Html::ParseMovie
+class Html::ParseMovieXpto
 
 	CANAL_HOLLYWOOD_URL = 'http://canalhollywood.pt/'
 
@@ -16,7 +16,7 @@ class Html::ParseMovie
 	def run
 		@report_start = DateTime.now
 		str = " Parsing #{movie.original_name}"
-		p "#{'#'*26}#{'%-50.50s' % str }#{'#'*26}"
+		_print "#{'#'*26}#{'%-50.50s' % str }#{'#'*26}"
 		@doc = get_html_page_document
 		inflate_movie
 		report_end
@@ -67,11 +67,11 @@ class Html::ParseMovie
 
 	def report_end
 		str = " Took #{DateTime.now.to_i - report_start.to_i} seconds to fetch movie"
-		p "#{'#'*26}#{'%-50.50s' % str }#{'#'*26}"
+		_print "#{'#'*26}#{'%-50.50s' % str }#{'#'*26}"
 		_print "#"*70
 	end
 
 	def _print(message)
-		p message if @debug
+		p message if @debug && false
 	end
 end
