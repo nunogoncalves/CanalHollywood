@@ -2,9 +2,9 @@
 
 Aplicação que faz scrapping ao site do Canal Hollywood e regista a programação e processa os dados. Possibilita a entrada manual de informação relativa aos filmes e permite também editar o elenco, bem como informação individual de actores.
 Permite ainda ver as estreias por mês.
-Tem ainda uma API para comunicação via Json por exemplo para ser consumida por aplicações móveis. (WIP)
+Disponibiliza uma api que responde em JSON com o objectivo de ser consumida por aplicações móveis por exemplo. (WIP)
 
-<img style="height: 200px;" src="https://dl.dropboxusercontent.com/u/2001692/Guia%20Hollywood/programacao.png">
+<img src="https://dl.dropboxusercontent.com/u/2001692/Guia%20Hollywood/programacao.png" style="width: 200px;"/>
 <img src="https://dl.dropboxusercontent.com/u/2001692/Guia%20Hollywood/programacao2.png">
 <img src="https://dl.dropboxusercontent.com/u/2001692/Guia%20Hollywood/programacao3.png">
 <img src="https://dl.dropboxusercontent.com/u/2001692/Guia%20Hollywood/programacao4.png">
@@ -24,7 +24,7 @@ nokogiri | Parser HTML (entre outros) | https://github.com/sparklemotion/nokogir
 rails_admin | Interface para manutenção de dados. | https://github.com/sferik/rails_admin
 simple_form | Gem para facilitar criação de formulários | https://github.com/plataformatec/simple_form
 ransack | Motor de pesquisa em cima de Active Record | https://github.com/activerecord-hackery/ransack
-active_model_serializers | Para facilitar a serialização para json | https://github.com/rails-api/active_model_serializers
+active_model_serializers | Para facilitar a serialização de objectos | https://github.com/rails-api/active_model_serializers
 usecasing | Ferramenta de padrão de desenvolvimento de Single Responsibility Principle | https://github.com/tdantas/usecasing
 ---
 
