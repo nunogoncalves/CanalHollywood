@@ -1,8 +1,20 @@
 <h1>Canal Hollywood </h1>
 
-Aplicação que faz scrapping ao site do Canal Hollywood e regista a programação e processa os dados. Possibilita a entrada manual de informação relativa aos filmes e permite também editar o elenco, bem como informação individual de actores.
-Permite ainda ver as estreias por mês.
-Disponibiliza uma api que responde em JSON com o objectivo de ser consumida por aplicações móveis por exemplo. (WIP)
+Aplicação que faz scrapping ao site do Canal Hollywood (http://canalhollywood.pt), processa a informação e regista os dados.
+Algumas features:
+<ul>
+  <li>Visualização de todas as programações desde o dia 1 de Março de 2012.</li>
+  <li>Para além do registo da informação existente registada no site fonte, permite complementar essa informação editando manualmente os filmes. </li>
+  <li>Visualização de todas as datas em que o filme foi reproduzido pelo canal.</li>
+  <li>Trailers, links para imdb, links para a página original do canal hollywood.</li>
+  <li>Gestão de actores, e associá-los aos filmes.</li>
+  <li>Visualização de estreias por mês.</li>
+  <li>Filtros personalizados.</li>
+  <li>Estatísticas.</li>
+  <li>Ver os filmes que passaram nos últimos 7 dias</li>
+  <li>Visualizar o canal em directo.</li>
+  <li>Disponibiliza uma api REST (apenas GETs) que responde em JSON com o objectivo de ser consumida por aplicações móveis por exemplo. (WIP)</li>
+</ul>
 
 <img src="https://dl.dropboxusercontent.com/u/2001692/Guia%20Hollywood/programacao.png" style="width: 200px;"/>
 <img src="https://dl.dropboxusercontent.com/u/2001692/Guia%20Hollywood/programacao2.png">
