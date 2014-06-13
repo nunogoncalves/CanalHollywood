@@ -2,10 +2,12 @@
 
 Aplicação que faz scrapping ao site do Canal Hollywood e regista a programação e processa os dados. Possibilita a entrada manual de informação relativa aos filmes e permite também editar o elenco, bem como informação individual de actores.
 Permite ainda ver as estreias por mês.
+Tem ainda uma API para comunicação via Json por exemplo para ser consumida por aplicações móveis. (WIP)
 
 <img src="https://dl.dropboxusercontent.com/u/2001692/Guia%20Hollywood/programacao.png">
 <img src="https://dl.dropboxusercontent.com/u/2001692/Guia%20Hollywood/programacao2.png">
 <img src="https://dl.dropboxusercontent.com/u/2001692/Guia%20Hollywood/programacao3.png">
+<img src="https://dl.dropboxusercontent.com/u/2001692/Guia%20Hollywood/programacao4.png">
 
 <strong>Listagem de filmes</strong>
 <img src="https://dl.dropboxusercontent.com/u/2001692/Guia%20Hollywood/movies.png">
