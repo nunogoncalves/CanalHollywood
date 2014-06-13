@@ -5,6 +5,7 @@ Permite ainda ver as estreias por mês.
 
 <img src="https://dl.dropboxusercontent.com/u/2001692/Guia%20Hollywood/programacao.png">
 <img src="https://dl.dropboxusercontent.com/u/2001692/Guia%20Hollywood/programacao2.png">
+<img src="https://dl.dropboxusercontent.com/u/2001692/Guia%20Hollywood/programacao3.png">
 
 <strong>Listagem de filmes</strong>
 <img src="https://dl.dropboxusercontent.com/u/2001692/Guia%20Hollywood/movies.png">
