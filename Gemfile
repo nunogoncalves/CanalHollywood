@@ -25,6 +25,6 @@ group :test do
   gem "codeclimate-test-reporter", '0.3.0'
   gem 'factory_girl_rails', '4.4.1'
   gem 'vcr', '2.9.2'
-  # gem 'webmock', '1.18.0'
+  gem 'webmock', '1.18.0'
   gem 'rake-progressbar', '0.0.5'
 end

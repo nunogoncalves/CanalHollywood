@@ -1,4 +1,4 @@
-class Movies::SyncWithHollywood
+class Movies::SyncWithHollywoodx
 
 	attr_accessor :date_range, :movies_list, :bengin_dates
 
@@ -48,7 +48,7 @@ class Movies::SyncWithHollywood
 	end
 
 	def process_day(day)
-		day_processer = Html::ParseScheduleOfDay.new(day).run
+		day_processer = Html::ParseScheduleOfDayXpto.new(day).run
 		movies = day_processer.movies
 		begin_times = day_processer.dates
 

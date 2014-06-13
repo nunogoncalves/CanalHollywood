@@ -11,7 +11,7 @@ class Movies::FetchMovieCompleteInformation
 			p " Already filled"
 			return self
 		else
-			movie = Html::ParseMovie.new(@movie).run.movie
+			movie = Html::ParseMovieXpto.new(@movie).run.movie
 		  return self
 		end
 	end

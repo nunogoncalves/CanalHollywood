@@ -37,12 +37,13 @@ class MoviesController < ApplicationController
 
 	def update
 		@movie = Movie.find(params[:id]);
-		@movie.update_attributes(params[:movie])		
+		@movie.update_attributes(params[:movie])
 		render :edit
 	end
 
 	def sync
-		Movies::SyncWithHollywood.new.run
+		# SyncWithCanalHollywood::Base.perform
+		Movies::SyncWithHollywoodx.new.run
 		render nothing: true
 	end
 
@@ -63,7 +64,7 @@ class MoviesController < ApplicationController
       @date = DateTime.parse(params[:date])
     else
       @date = DateTime.now
-    end    
+    end
   end
 
 end
