@@ -4,6 +4,8 @@ module Printers
     def print_messages
       sym = chosen_symbol_or_default
       messages.each do |message|
+        length = message.length
+        length += 1 if odd?(length)
         num_of_syms = (100 - (message.length)) / 2
         new_message = build_message_padded(message, num_of_syms, sym)
         print_message(new_message)

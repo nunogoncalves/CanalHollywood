@@ -2,18 +2,50 @@ require 'spec_helper'
 
 describe MoviesController do
   describe 'PUT#SYNC' do
-    it 'create movies and schedules when database is empty' do
+    it 'create movies and schedules when database is empty old method' do
       VCR.use_cassette('old_schedules_cassette') do
         put 'sync'
         expectations
       end
     end
 
-    it 'should sync movies when database is not empty' do
+    it 'create movies and schedules when database is empty old method new method' do
       VCR.use_cassette('new_schedules_cassette') do
         SyncWithCanalHollywood::Base.perform
         expectations
       end
+    end
+
+    it 'should sync movies when database is not empty old method' do
+      VCR.use_cassette('old_multiple_months_schedules_cassette') do
+        put 'sync'
+        into_the_blue = Movie.find_by_canal_hollywood_url('/programa/89529_0/?profundo-azul');
+        expect(into_the_blue.schedules.count).to be(2)
+
+        put 'sync'
+        into_the_blue = Movie.find_by_canal_hollywood_url('/programa/89529_0/?profundo-azul');
+        expect(into_the_blue.schedules.count).to be(4)
+        expectations_2
+      end
+    end
+
+    it 'should sync movies when database is not empty new method' do
+      VCR.use_cassette('new_multiple_months_schedules_cassette') do
+
+        SyncWithCanalHollywood::Base.perform
+        into_the_blue = Movie.find_by_canal_hollywood_url('/programa/89529_0/?profundo-azul');
+        expect(into_the_blue.schedules.count).to be(2)
+
+        SyncWithCanalHollywood::Base.perform
+        expectations_2
+        expect(into_the_blue.schedules.count).to be(4)
+      end
+    end
+
+    def expectations_2
+      expect(Movie.count).to be(377)
+      expect(Schedule.count).to be(776)
+      into_the_blue = Movie.find_by_canal_hollywood_url('/programa/89529_0/?profundo-azul');
     end
 
     def expectations

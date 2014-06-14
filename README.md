@@ -7,7 +7,7 @@ Algumas features:
   <li>Para além do registo da informação existente registada no site fonte, permite complementar essa informação editando manualmente os filmes. </li>
   <li>Visualização de todas as datas em que o filme foi reproduzido pelo canal.</li>
   <li>Trailers, links para imdb, links para a página original do canal hollywood.</li>
-  <li>Gestão de actores, e associá-los aos filmes.</li>
+  <li>Gestão de actores, e associação dos a filmes.</li>
   <li>Visualização de estreias por mês.</li>
   <li>Filtros personalizados.</li>
   <li>Estatísticas.</li>
