@@ -34,6 +34,11 @@ class Statistics::IndexPresenter < Presenter
 		total_movies / months_between
 	end
 
+	def movies_premiered_on_day_count(week_day)
+		week_day = 0 if week_day > 6 || week_day < 0
+		Movie.where(canal_hollywood_premiere_day_of_the_week: week_day).count
+	end
+
 	def total_actors
 		@total_actors = Actor.all.count
 	end

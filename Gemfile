@@ -17,6 +17,10 @@ gem "pry", "0.9.12.6", group: [:development, :test]
 gem "pry-rails", "0.3.2", group: [:development, :test]
 gem 'jazz_hands', '0.5.2', group: [:development, :test]
 
+group :development do
+  gem "quiet_assets", ">= 1.0.1"
+end
+
 group :test do
   gem 'rspec-rails', '2.14.2'
   gem 'rspec-mocks', '2.14.6'

@@ -42,8 +42,8 @@ class MoviesController < ApplicationController
 	end
 
 	def sync
-		# SyncWithCanalHollywood::Base.perform
-		Movies::SyncWithHollywoodx.new.run
+		SyncWithCanalHollywood::Base.perform
+		# Movies::SyncWithHollywoodx.new.run
 		render nothing: true
 	end
 

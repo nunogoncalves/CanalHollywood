@@ -1,6 +1,6 @@
 <% presenter = @statistics_presenter %>
 <div id="general_stats_container" style="display: inline-block; vertical-align: top" class="white">
-	
+
 	Estatísticas
 
 	======================= FILMES ====================</br>
@@ -12,6 +12,13 @@
 	Filme mais antigo: <%= presenter.oldest_movie.html_safe %> </br>
 	Filme mais recente: <%= presenter.newest_movie.html_safe %></br>
 	Média de estreias por mês: <%= presenter.average_month_premieres %></br>
+	<%= link_to 'Filmes Estreados ao Domingo', movies_path(q: {canal_hollywood_premiere_day_of_the_week_eq: 0}) %>: <%= presenter.movies_premiered_on_day_count(0) %></br>
+	<%= link_to 'Filmes Estreados à Segunda Feira', movies_path(q: {canal_hollywood_premiere_day_of_the_week_eq: 1}) %>: <%= presenter.movies_premiered_on_day_count(1) %></br>
+	<%= link_to 'Filmes Estreados à Terça Feira', movies_path(q: {canal_hollywood_premiere_day_of_the_week_eq: 2}) %>: <%= presenter.movies_premiered_on_day_count(2) %></br>
+	<%= link_to 'Filmes Estreados à Quarta Feira', movies_path(q: {canal_hollywood_premiere_day_of_the_week_eq: 3}) %>: <%= presenter.movies_premiered_on_day_count(3) %></br>
+	<%= link_to 'Filmes Estreados à Quinta Feira', movies_path(q: {canal_hollywood_premiere_day_of_the_week_eq: 4}) %>: <%= presenter.movies_premiered_on_day_count(4) %></br>
+	<%= link_to 'Filmes Estreados à Sexta Feira', movies_path(q: {canal_hollywood_premiere_day_of_the_week_eq: 5}) %>: <%= presenter.movies_premiered_on_day_count(5) %></br>
+	<%= link_to 'Filmes Estreados ao Sábado', movies_path(q: {canal_hollywood_premiere_day_of_the_week_eq: 6}) %>: <%= presenter.movies_premiered_on_day_count(6) %></br>
 
 	======================== ACTORES ===================</br>
 	Número de actores no total: <%= presenter.total_actors %></br>

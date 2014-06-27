@@ -43,7 +43,8 @@ module Html
             local_name: extract_local_name(schedule_html_element),
             genre: extract_genre(schedule_html_element),
             small_image_url: extract_small_image_url(schedule_html_element),
-            canal_hollywood_url: extract_canal_hollywood(schedule_html_element),
+            canal_hollywood_url: extract_canal_hollywood_url(schedule_html_element),
+            canal_hollywood_id: extract_canal_hollywood_id(extract_canal_hollywood_url(schedule_html_element)),
             channel_id: 0
           },
           without_protection: true)
@@ -74,8 +75,15 @@ module Html
         genre
       end
 
-      def extract_canal_hollywood(html_element)
+      def extract_canal_hollywood_url(html_element)
         html_element.children[3].children[0]['href']
+      end
+
+      def extract_canal_hollywood_id(canal_hollywood_url)
+        str = canal_hollywood_url
+        str.slice!("/programa/")
+        str = str.slice(0..(str.index('/')-1))
+        str
       end
 
       def extract_small_image_url(html_element)

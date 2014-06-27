@@ -17,7 +17,10 @@ module SyncWithCanalHollywood
           existing_movie.save
 
         else
-          movie.schedules.new({start_date_time: begin_date, end_date_time: end_date, duration_mins: (end_date.to_i - begin_date.to_i) / 60 }, without_protection: true)
+          new_schedule = movie.schedules.new({start_date_time: begin_date, end_date_time: end_date, duration_mins: (end_date.to_i - begin_date.to_i) / 60 }, without_protection: true)
+          if movie.canal_hollywood_premiere.blank? || new_schedule.start_date_time < movie.canal_hollywood_premiere
+            movie.canal_hollywood_premiere = new_schedule.start_date_time
+          end
           movie.save
         end
         puts "#{i}: #{movie.original_name} - #{dates[i]}"
