@@ -11,21 +11,21 @@
 	  <a class="<%= 'selectedFilter' if @searcher.order == 'canal_hollywood_premiere asc' %> badge glyphicon glyphicon-chevron-up" href="<%= movies_path(query: @searcher.query, order: "canal_hollywood_premiere asc") %>"> </a>
 	  <a class="<%= 'selectedFilter' if @searcher.order == 'canal_hollywood_premiere desc' %> badge glyphicon glyphicon-chevron-down" href="<%= movies_path(query: @searcher.query, order: "canal_hollywood_premiere desc") %>"> </a>
 	</span>
-	
+
 	<span class="myBadge btn-primary">
 	  Título Original
 	  <a class="<%= 'selectedFilter' if @searcher.order == 'original_name asc' %> badge glyphicon glyphicon-sort-by-alphabet" href="<%= movies_path(query: @searcher.query, order: "original_name asc") %>"> </a>
 	  <a class="<%= 'selectedFilter' if @searcher.order == 'original_name desc' %> badge glyphicon glyphicon glyphicon-sort-by-alphabet-alt" href="<%= movies_path(query: @searcher.query, order: "original_name desc") %>"> </a>
 	</span>
 
-	
+
 	<span class="myBadge btn-primary">
 	  Título Local
 	  <a class="<%= 'selectedFilter' if @searcher.order == 'local_name asc' %> badge glyphicon glyphicon-sort-by-alphabet" href="<%= movies_path(query: @searcher.query, order: "local_name asc") %>"> </a>
 	  <a class="<%= 'selectedFilter' if @searcher.order == 'local_name desc' %> badge glyphicon glyphicon-sort-by-alphabet-alt" href="<%= movies_path(query: @searcher.query, order: "local_name desc") %>"> </a>
 	</span>
 
-	
+
 	<span class="myBadge btn-primary">
 	  Número de vezes
 	  <a class="<%= 'selectedFilter' if @searcher.order == 'schedules_count asc' %> badge glyphicon glyphicon-sort-by-attributes" href="<%= movies_path(query: @searcher.query, order: "schedules_count asc") %>"> </a>
@@ -43,5 +43,11 @@
 	  Ano
 	  <a class="<%= 'selectedFilter' if @searcher.order == 'year asc' %> badge glyphicon glyphicon-chevron-up" href="<%= movies_path(query: @searcher.query, order: "year asc") %>"> </a>
 	  <a class="<%= 'selectedFilter' if @searcher.order == 'year desc' %> badge glyphicon glyphicon-chevron-down" href="<%= movies_path(query: @searcher.query, order: "year desc") %>"> </a>
+	</span>
+
+	<span class="myBadge btn-primary">
+	  Rating imdb
+	  <a class="<%= 'selectedFilter' if @searcher.order == 'imdb_rating asc' %> badge glyphicon glyphicon-chevron-up" href="<%= movies_path(query: @searcher.query, order: "imdb_rating asc") %>"> </a>
+	  <a class="<%= 'selectedFilter' if @searcher.order == 'imdb_rating desc' %> badge glyphicon glyphicon-chevron-down" href="<%= movies_path(query: @searcher.query, order: "imdb_rating desc") %>"> </a>
 	</span>
 </div>

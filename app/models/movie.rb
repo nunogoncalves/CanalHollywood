@@ -1,6 +1,6 @@
 #encoding UTF-8
 class Movie < ActiveRecord::Base
-  attr_accessible :id, :big_image_url, :canal_hollywood_url,
+  attr_accessible :id, :big_image_url, :canal_hollywood_url, :imdb_rating,
   :schedules_count, :description, :director, :genre, :actor_ids,
   :local_name, :original_name, :small_image_url, :year, :channel_id, :imdb_url, :youtube_url
 

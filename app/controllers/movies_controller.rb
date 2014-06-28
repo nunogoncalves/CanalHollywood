@@ -48,7 +48,7 @@ class MoviesController < ApplicationController
 	end
 
 	def imdb_rating
-		Movie.find(params[:id]).update_attribute("imdb_rating", params[:rating])
+		Movie.update(params[:id], imdb_rating: params[:rating])
 		render nothing: true
 	end
 
