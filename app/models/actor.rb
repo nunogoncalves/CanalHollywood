@@ -14,7 +14,7 @@ class Actor < ActiveRecord::Base
   	end
   end
 
-  IMAGES_ROOT_URL = "https://dl.dropboxusercontent.com/u/2001692/actor/"
+  IMAGES_ROOT_URL = 'https://dl.dropboxusercontent.com/u/2001692/applications/CanalHollywood/Actors/'
 
   def name_and_movies_count
     "#{name} (#{movies_count})"
@@ -32,9 +32,9 @@ class Actor < ActiveRecord::Base
   def calculate_age(dob, dod)
   	dod.year - dob.year - ((dod.month > dob.month || (dod.month == dob.month && dod.day >= dob.day)) ? 0 : 1)
 	end
-  	
+
   def imdb_search_url
-    return "" if name.blank? 
+    return "" if name.blank?
     "http://www.imdb.com/find?q=#{name_no_spaces}&s=all#nm"
   end
 

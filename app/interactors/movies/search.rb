@@ -41,12 +41,16 @@ class Movies::Search
 		@order
 	end
 
+	def q
+		@q
+	end
+
 	private # -------------------------------------------------------------private methods
 
 	def no_imdb
 		@search = Movie.where("imdb_url is null or imdb_url = ''").order(@order).page(@page).per(50).search(@q)
 	end
-	
+
 	def no_youtube
 		@search = Movie.where("youtube_url is null or youtube_url = ''").order(@order).page(@page).per(50).search(@q)
 	end

@@ -25,7 +25,7 @@ module SyncWithCanalHollywood
     end
 
     def get_first_date_on_canal_hollywood_site
-      return Date.new(2013, 7, 27)
+      return Date.new(2013, 7, 1)
     end
 
   end
