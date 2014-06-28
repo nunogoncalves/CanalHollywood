@@ -9,8 +9,9 @@ CanalHollywood::Application.routes.draw do
       get "all_of_month" => 'movies#all_of_month'
       get "last_seven_days" => "movies#last_seven_days"
     end
-    member do 
+    member do
       get "refresh" => "movies#refresh"
+      put "imdb_rating" => "movies#imdb_rating"
     end
   end
   resources :actors

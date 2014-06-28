@@ -26,7 +26,7 @@
           <%= f.submit "Guardar", class: "btn-primary", style: "margin-left: 132px; margin-top: 15px;" %>
         <% end %>
       </div>
-      
+
       <div style="display: inline-block; vertical-align: top;">
         <%= image_tag @movie.big_image_url, style: "width: 320px; height: 220px" %></br>
         <%= link_to "Novo Actor", new_actor_path %>
@@ -47,11 +47,31 @@
       success: function(data, textStatus, jqXHR) {
         $("#movie_description").val(data.description);
         $(element).hide();
-      }, 
+      },
       error: function(data, textStatus, jqXHR) {
         $(element).attr("src", "/assets/refresh.png");
       }
     });
   }
+  </script>
+
+  <script>
+    (function(namespace) {
+      console.log("ola")
+      namespace.imdb_container = $("#imdb_rating_plugin_container");
+      var movieRatingInterval = setInterval(function() {
+        if(namespace.imdb_container.find("span.rating").length > 0) {
+          clearInterval(movieRatingInterval);
+          $("#imdb_rating_plugin_container").find("span.rating").find(".ofTen").remove();
+          var rating = ($("#imdb_rating_plugin_container").find("span.rating").text());
+          url = '<%= imdb_rating_movie_path(@movie.id) %>' + '?rating=' + rating;
+          $.ajax({
+            type: 'PUT',
+            url: url,
+            dataType: "script"
+          });
+        }
+      }, 1000)
+    })($.movies)
   </script>
 </div>

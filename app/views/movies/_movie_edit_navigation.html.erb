@@ -8,7 +8,10 @@
 <a href="http://canalhollywood.pt/<%= @movie.canal_hollywood_url %>" target="_blank"><img src="/assets/hollywood_icon.jpg" style="height: 35px"></a>
 
 <% if @movie.imdb_url.present? %>
-		<a href="<%= @movie.imdb_full_url %>" target="_blank"><img src="/assets/imdb_big.png" style="height: 35px"></a>
+		<%= render 'layouts/imdb_rating_plugin' %>
+    <span id="imdb_rating_plugin_container">
+      <%= render 'schedules/imdb_rating', movie: @movie %>
+    </span>
 	<% end %>
 
 <a href="<%= edit_movie_path(@movie.next_movie_id) %>" class="btn btn-primary"><i class="glyphicon glyphicon-step-forward"></i><%= @movie.next_movie.original_name %></a>

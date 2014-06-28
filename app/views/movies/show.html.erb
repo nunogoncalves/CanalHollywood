@@ -6,7 +6,10 @@
 	<img src="/assets/program_file.png" alt="">
 	<a href="http://canalhollywood.pt/<%= @movie.canal_hollywood_url %>" target="_blank"><img src="/assets/hollywood_icon.jpg" style="height: 29px"></a>
 	<% if @movie.imdb_url.present? %>
-		<a href="<%= @movie.imdb_full_url %>"><img src="/assets/imdb_big.png" style="height: 29px"></a>
+		<%= render 'layouts/imdb_rating_plugin' %>
+		<span id="imdb_rating_plugin_container">
+			<%= render 'schedules/imdb_rating', movie: @movie %>
+		</span>
 	<% end %>
 </div>
 
@@ -16,7 +19,7 @@
 	</div>
 
 	<div style="display: inline-block; max-width: 850px; margin-left: 1px; overflow-x: scroll; overflow-y: hidden; white-space:nowrap;width: 100%; background-size: 80px 60px; background: url(/assets/actors_group.png);">
-		<% @movie.actors.each do |a| %> 
+		<% @movie.actors.each do |a| %>
 			<div style="display: inline-block;">
 				<div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
 					<%= link_to(a.name, actor_path(a)) %></br>
@@ -52,4 +55,23 @@
 		<%= render "layouts/youtube", movie: @movie %>
 	</div>
 </div>
+
+<script>
+	(function(namespace) {
+		namespace.imdb_container = $("#imdb_rating_plugin_container");
+		var movieRatingInterval = setInterval(function() {
+			if(namespace.imdb_container.find("span.rating").length > 0) {
+				clearInterval(movieRatingInterval);
+				$("#imdb_rating_plugin_container").find("span.rating").find(".ofTen").remove();
+				var rating = ($("#imdb_rating_plugin_container").find("span.rating").text());
+				url = '<%= imdb_rating_movie_path(@movie.id) %>' + '?rating=' + rating;
+				$.ajax({
+		      type: 'PUT',
+		      url: url,
+		      dataType: "script"
+		    });
+			}
+		}, 1000)
+	})($.movies)
+</script>
 

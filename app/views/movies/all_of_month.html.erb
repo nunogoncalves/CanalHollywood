@@ -1,12 +1,16 @@
-<h1><%= I18n.l(@date, format: "%B de %Y") %></h1>
-<% begin_date = @date.at_beginning_of_month.change(hour: 6, min: 0) %>
-<% end_date = begin_date.next_month %>
-<% @movies_ids.each do |m_id| %>
-	<% schedules = Schedule.where("movie_id = ? AND start_date_time > ? AND end_date_time < ?", m_id, begin_date, end_date) %>
-	<div class="white">
-		Filme: <%= Movie.find(m_id).original_name %>, count: <%= schedules.count %></br>
-		<%= schedules.map{ |s| s.start_date_time.strftime("%Y-%m-%d %H:%M")} %></br>
-		------------------------------------------------------------</br>
-		------------------------------------------------------------
-	</div>
-<% end %>
+<%= render "layouts/imdb_rating_plugin" %>
+<div style="width: 100%">
+  <%= render 'schedules/month_navigator', date: @current_date %>
+  <ul class="schedule_of_day_container">
+    <div class="white"><%= "#{@movies_ids.count} Filmes rodados no Canal Hollywood em #{I18n.l(@date, format: "%B de %Y")}" %></div>
+    <% begin_date = @date.at_beginning_of_month.change(hour: 6, min: 0) %>
+    <% end_date = begin_date.next_month %>
+    <% @movies_ids.each do |movie_id| %>
+      <% movie = Movie.find(movie_id) %>
+      <%= render "schedules/item", movie: movie %>
+      <% schedules = Schedule.where("movie_id = ? AND start_date_time > ? AND end_date_time < ?", movie_id, begin_date, end_date) %>
+     <div style="color: white">count: <%= schedules.count %> <%= schedules.map{ |s| s.start_date_time.strftime("%Y-%m-%d %H:%M")} %></div>
+    <% end %>
+  </ul>
+  <%#= link_to "#", movies_path, style: "display: none", id: "new_date_query" %>
+</div>

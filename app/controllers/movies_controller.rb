@@ -47,6 +47,11 @@ class MoviesController < ApplicationController
 		render nothing: true
 	end
 
+	def imdb_rating
+		Movie.find(params[:id]).update_attribute("imdb_rating", params[:rating])
+		render nothing: true
+	end
+
 	def refresh
 		movie = Movie.find(params[:id])
 		if movie.present?
