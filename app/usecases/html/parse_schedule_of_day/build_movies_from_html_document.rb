@@ -1,3 +1,4 @@
+#encoding: utf-8
 module Html
   module ParseScheduleOfDay
 
@@ -72,7 +73,8 @@ module Html
         genre = genre.match(/ - (.*)-->/m).to_s
         genre.slice! " - "
         genre.slice! "-->"
-        genre
+        genre = 'Comédia' if genre == 'Comedia'
+        genre = 'Acção' if genre == 'Accao'
       end
 
       def extract_canal_hollywood_url(html_element)

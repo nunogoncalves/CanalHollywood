@@ -55,7 +55,8 @@ class MoviesController < ApplicationController
 	def refresh
 		movie = Movie.find(params[:id])
 		if movie.present?
-			movie = Html::ParseMovie.new(movie).run.movie
+			# movie = Html::ParseMovie.new(movie).run.movie
+			Html::ParseMovie::Base.perform(movie: movie)
 			movie.save!
 			render json: {description: movie.description, image: movie.small_image_url}
 		else

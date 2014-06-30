@@ -100,6 +100,10 @@ class Movie < ActiveRecord::Base
     update_column("actors_count", self.actors.count)
   end
 
+  def update_schedules_count
+    update_attribute("schedules_count", self.schedules.count)
+  end
+
   def has_future_schedule?
     schedules.where("start_date_time > '#{DateTime.now}'").count > 0
   end
@@ -116,6 +120,12 @@ class Movie < ActiveRecord::Base
   def self.update_movie_actors
     Movie.all.each do |movie|
       movie.update_actors_count
+    end
+  end
+
+  def self.update_movie_schedules
+    Movie.find_each do |m|
+    Movie.reset_counters m.id, :schedules
     end
   end
 
