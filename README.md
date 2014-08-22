@@ -16,16 +16,16 @@ Algumas features:
   <li>Disponibiliza uma api REST (apenas GETs) que responde em JSON com o objectivo de ser consumida por aplicações móveis por exemplo. (WIP)</li>
 </ul>
 
-<img src="https://dl.dropboxusercontent.com/u/2001692/Guia%20Hollywood/programacao.png" style="width: 200px;"/>
-<img src="https://dl.dropboxusercontent.com/u/2001692/Guia%20Hollywood/programacao2.png"/>
-<img src="https://dl.dropboxusercontent.com/u/2001692/Guia%20Hollywood/programacao3.png"/>
-<img src="https://dl.dropboxusercontent.com/u/2001692/Guia%20Hollywood/programacao4.png"/>
+<img src="https://dl.dropboxusercontent.com/u/2001692/ImagesShelf/Guia%20Hollywood/programacao.png" style="width: 200px;"/>
+<img src="https://dl.dropboxusercontent.com/u/2001692/ImagesShelf/Guia%20Hollywood/programacao2.png"/>
+<img src="https://dl.dropboxusercontent.com/u/2001692/ImagesShelf/Guia%20Hollywood/programacao3.png"/>
+<img src="https://dl.dropboxusercontent.com/u/2001692/ImagesShelf/Guia%20Hollywood/programacao4.png"/>
 
 <strong>Listagem de filmes</strong>
-<img src="https://dl.dropboxusercontent.com/u/2001692/Guia%20Hollywood/movies.png">
+<img src="https://dl.dropboxusercontent.com/u/2001692/ImagesShelf/Guia%20Hollywood/movies.png">
 
 <strong>Listagem de actores</strong>
-<img src="https://dl.dropboxusercontent.com/u/2001692/Guia%20Hollywood/actors.png">
+<img src="https://dl.dropboxusercontent.com/u/2001692/ImagesShelf/Guia%20Hollywood/actors.png">
 
 Ferramenta | Descrição | GitHub
 ---------- | --------- | ------
