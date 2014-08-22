@@ -14,7 +14,7 @@ class Actor < ActiveRecord::Base
   	end
   end
 
-  IMAGES_ROOT_URL = 'https://dl.dropboxusercontent.com/u/2001692/applications/CanalHollywood/Actors/'
+  IMAGES_ROOT_URL = 'https://dl.dropboxusercontent.com/u/2001692/ImagesShelf/CanalHollywood/Actors/'
 
   def name_and_movies_count
     "#{name} (#{movies_count})"
