@@ -5,16 +5,20 @@ module Printers
 
     def perform
       @messages = context.messages
-      print_messages
+      print_messages(context.color || 'white')
     end
 
-    def print_message(message)
+    def print_messages(color = nil)
+      messages.each { |message| print_message(message).color(color) }
+    end
+
+    def print_message(message, color)
       length = message.length
       if odd?(length)
         --length
         message = "#{message} "
       end
-      p "#####{x_times(length)} #{message} #{x_times(length)}####"
+      puts "#####{x_times(length)} #{message} #{x_times(length)}####".color(color)
     end
 
     def odd?(value)

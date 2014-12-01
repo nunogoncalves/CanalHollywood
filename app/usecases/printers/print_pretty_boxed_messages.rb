@@ -1,10 +1,11 @@
 module Printers
   class PrintPrettyBoxedMessages < Printer
 
-    def print_messages
-        p '#' * 100
-        messages.each { |message| print_message(message) }
-        p '#' * 100
+    def print_messages(c = 'white')
+      edge = "#{'#' * 100}".color(c)
+      puts edge
+      messages.each { |message| print_message(message, c) }
+      puts edge
     end
 
   end

@@ -14,7 +14,7 @@ module Html
 
         schedule_html_elements.each do |schedule_html_element|
           movie = build_movie_from_schedule_element(schedule_html_element)
-          str = "      \\\-- #{movie.original_name}".ljust(45)
+          str = "      \\\-- #{movie.original_name}".ljust(45).green
           Printers::PrintSimpleMessages.perform(messages: [str])
           movies << movie
           dates << build_date_from_html_element(extract_begin_hour(schedule_html_element))

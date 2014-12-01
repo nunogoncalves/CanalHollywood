@@ -1,19 +1,19 @@
 module Printers
   class PrintMessagesPaddedWithSymbol < Printer
 
-    def print_messages
+    def print_messages(color = 'white')
       sym = chosen_symbol_or_default
       messages.each do |message|
         length = message.length
         length += 1 if odd?(length)
         num_of_syms = (100 - (message.length)) / 2
         new_message = build_message_padded(message, num_of_syms, sym)
-        print_message(new_message)
+        print_message(new_message, color)
       end
     end
 
-    def print_message(_message)
-      p _message
+    def print_message(_message, color="white")
+      puts _message.color(color)
     end
 
     def chosen_symbol_or_default

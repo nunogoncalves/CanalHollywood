@@ -23,7 +23,7 @@ module SyncWithCanalHollywood
           end
           movie.save
         end
-        puts "#{i}: #{movie.original_name} - #{dates[i]}"
+        puts "#{i}:".pink + " #{movie.original_name} - #{dates[i]}"
       end
 
       # end_time = i == (@movies_list.count - 1) ? @begin_dates[i] + 120.minutes : @begin_dates[i+1]

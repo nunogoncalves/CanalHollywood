@@ -12,7 +12,9 @@ module SyncWithCanalHollywood
     end
 
     def print_header_for_day(day)
-      Printers::PrintMessagesPaddedWithSymbol.perform(messages: ["Getting schedules of day #{day}"])
+      Printers::PrintMessagesPaddedWithSymbol.perform(
+        messages: ["Getting schedules of day #{day}"],
+        color: 'yellow')
     end
 
     def parse_day_schedule
