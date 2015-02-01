@@ -21,6 +21,7 @@ module Printers
     end
 
     def build_message_padded(message, n, sym)
+      n = 1 if n < 1
       "#{sym}"*n + " #{message} " + "#{sym}"*n
     end
 

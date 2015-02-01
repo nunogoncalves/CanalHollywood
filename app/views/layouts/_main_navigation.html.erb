@@ -1,6 +1,6 @@
 <% now = DateTime.now + 1.hours %>
 <% now_schedule = Schedule.where("start_date_time < ? AND end_date_time > ?", now, now).first %>
-<% movie = now_schedule.movie %>
+<% movie = now_schedule.movie if now_schedule %>
 
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="navbar-header">
@@ -34,6 +34,6 @@
     <ul class="nav navbar-nav navbar-right">
       <li><%= link_to "Testes HTML", html_tests_path %></li>
     </ul>
-		<marquee id="on_air_marqee_element" data-movie_id="<%= now_schedule.id %>" class="white" style="width: 150px; margin-top: 16px">Agora no ar: <%= movie.original_name %></marquee>
+		<marquee id="on_air_marqee_element" data-movie_id="<%= now_schedule.try(:id) %>" class="white" style="width: 150px; margin-top: 16px">Agora no ar: <%= movie.try(:original_name) %></marquee>
   </div><!-- /.navbar-collapse -->
 </nav>

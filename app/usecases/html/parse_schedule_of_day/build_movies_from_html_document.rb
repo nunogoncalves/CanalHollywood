@@ -57,14 +57,15 @@ module Html
         original_name = original_name.match(/ Original: (.*)-->/).to_s
         original_name.slice! ' Original: '
         original_name.slice! "-->"
-        original_name = swap_after_comma_to_beggining(original_name, "The")
+        original_name = Movie.rewrite_propper_name(original_name, "The")
+        original_name = Movie.rewrite_propper_name(original_name, "A")
         original_name
       end
 
       def extract_local_name(html_element)
         local_name = html_element.children[5].text.strip
-        local_name = swap_after_comma_to_beggining(local_name, "A")
-        local_name = swap_after_comma_to_beggining(local_name, "O")
+        local_name = Movie.rewrite_propper_name(local_name, "A")
+        local_name = Movie.rewrite_propper_name(local_name, "O")
         local_name
       end
 
@@ -104,13 +105,6 @@ module Html
         _date
       end
 
-      def swap_after_comma_to_beggining(str, tail)
-        ends_with_matcher = ", #{tail}"
-        if str.end_with?(ends_with_matcher)
-          return "#{tail} #{str[0..str.rindex(ends_with_matcher)-1]}"
-        end
-        str
-      end
     end
   end
 end

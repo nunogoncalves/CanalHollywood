@@ -6,7 +6,9 @@ module Html
 
       def perform
         day = context.day.to_s
-        context.document = Html::GetHtmlDocumentForUrl.perform(url: "#{CANAL_HOLLYWOOD_URL}#{day}/").document
+        context.document = Html::GetHtmlDocumentForUrl
+                            .perform(url: "#{CANAL_HOLLYWOOD_URL}#{day}/")
+                            .document
       end
 
     end

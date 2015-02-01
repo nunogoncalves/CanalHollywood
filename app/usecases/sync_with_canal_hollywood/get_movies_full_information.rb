@@ -20,7 +20,9 @@ module SyncWithCanalHollywood
     private # ============ private methods ===================
 
     def exists?(movie)
-      Movie.find_by_canal_hollywood_url(movie.canal_hollywood_url).present?
+      Movie.rewrite_propper_name(movie.original_name, "The")
+      Movie.rewrite_propper_name(movie.original_name, "A ")
+      movie.exists?
     end
 
   end

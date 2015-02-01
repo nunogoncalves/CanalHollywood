@@ -13,7 +13,14 @@ class Movie < ActiveRecord::Base
   after_save :update_actors_count
 
   def exists?
-    Movie.where(canal_hollywood_url: self.canal_hollywood_url).count > 0
+    return true if Movie.where(canal_hollywood_url: canal_hollywood_url).count > 0
+    return true if Movie.where(original_name: original_name).count > 0
+    #canal hollywood bastards changing the characters in movies.... and the codes as well........
+    Movie.where(original_name: original_name.gsub("\u0060", "'")).count > 0
+  end
+
+  def self.where_canal_hollywood_url_or_original_name(canal_hollywood_url, original_name)
+    where("canal_hollywood_url = ? OR original_name = ?", canal_hollywood_url, original_name.gsub("\u0060", "'"))
   end
 
   def small_image_display
@@ -140,6 +147,15 @@ class Movie < ActiveRecord::Base
     now = DateTime.now + 1.hours
     now_schedule = Schedule.where("start_date_time < ? AND end_date_time > ?", now, now).first
     movie = now_schedule.movie
+  end
+
+  #converts "Last Samurai, The" to "The Last Samurai"
+  def self.rewrite_propper_name(str, tail)
+    ends_with_matcher = ", #{tail}"
+    if str.end_with?(ends_with_matcher)
+      return "#{tail} #{str[0..str.rindex(ends_with_matcher)-1]}"
+    end
+    str
   end
 
 end
