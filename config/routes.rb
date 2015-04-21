@@ -18,6 +18,8 @@ CanalHollywood::Application.routes.draw do
   resources :schedules, except: [:show, :edit, :new, :update, :create] do
     collection do
       get "of_day" => "schedules#index"
+      get "edit_day_schedule" => "schedules#edit_day_schedule"
+      put "of_day" => "schedules#update_day_schedule"
       get "premieres_of_month" => "schedules#premieres_of_month"
     end
   end

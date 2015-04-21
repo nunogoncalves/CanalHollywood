@@ -31,6 +31,13 @@ class SchedulesController < ApplicationController
 
   end
 
+  def edit_day_schedule
+    @movies = []
+  end
+
+  def update_day_schedule
+  end
+
   private
 
   def set_date

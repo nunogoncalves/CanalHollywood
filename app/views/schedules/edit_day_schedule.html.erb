@@ -1,0 +1,23 @@
+<% movies = Movie.all %>
+<div style="color: white;">
+  <% (1..13).to_a.each do |i| %>
+  <div>
+    <%= i < 10 ? "0#{i}" : i %>
+    <input class="datetimepicker" value="03/11/2014" style="width: 166px; display: inline-block"></input>
+    <input placeholder="inicio"></input>
+    <input class="datetimepicker" value="03/11/2014" style="width: 166px; display: inline-block"></input>
+    <input placeholder="fim"></input>
+    <select class="movies_select" style="width: 300px">
+        <option value=""></option>
+      <% movies.each do |movie| %>
+        <option value="<%= movie.id %>"><%= movie.original_name %></option>
+      <% end %>
+    </select>
+  </div>
+  <% end %>
+</div>
+
+<script>
+  $(".datetimepicker").datepick()
+  $(".movies_select").select2()
+</script>
