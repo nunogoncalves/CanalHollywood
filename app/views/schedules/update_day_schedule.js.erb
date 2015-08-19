@@ -1,0 +1,7 @@
+<% if @error.present? %>
+  $("#item_id_" + <%= @item_id %>).find("img.not_ok").css("visibility", "show")
+<% else %>
+  $("#submit_button_<%= @item_id %>").attr("disabled", true)
+  $("#item_id_" + <%= @item_id %>).find("img.ok").css("visibility", "show")
+<% end %>
+
