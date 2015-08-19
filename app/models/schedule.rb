@@ -1,5 +1,5 @@
 class Schedule < ActiveRecord::Base
-  attr_accessible :duration_mins, :end_date_time, :movie_id, :start_date_time
+  attr_accessible :duration_mins, :end_date_time, :movie_id, :start_date_time, :duration
 
   belongs_to :movie, :counter_cache => true
 
@@ -27,7 +27,7 @@ class Schedule < ActiveRecord::Base
   def display_date_time
     I18n.l(start_date_time, format: "%A, %d de %B de %Y, as %H:%M")
   end
-    
+
   def start_and_end_hours
     "#{start_date_time.strftime("%H:%M")} - #{end_date_time.strftime("%H:%M")}"
   end
@@ -47,6 +47,6 @@ class Schedule < ActiveRecord::Base
   end
 
   def to_s
-  	"#{movie} #{start_date_time}"
+    "start_date_time: #{start_date_time}, end_date_time: #{end_date_time}, movie: #{movie.original_name}, duration_mins: #{duration_mins}"
   end
 end

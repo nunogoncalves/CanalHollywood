@@ -1,23 +1,48 @@
 <% movies = Movie.all %>
 <div style="color: white;">
   <% (1..13).to_a.each do |i| %>
-  <div>
-    <%= i < 10 ? "0#{i}" : i %>
-    <input class="datetimepicker" value="03/11/2014" style="width: 166px; display: inline-block"></input>
-    <input placeholder="inicio"></input>
-    <input class="datetimepicker" value="03/11/2014" style="width: 166px; display: inline-block"></input>
-    <input placeholder="fim"></input>
-    <select class="movies_select" style="width: 300px">
-        <option value=""></option>
-      <% movies.each do |movie| %>
-        <option value="<%= movie.id %>"><%= movie.original_name %></option>
-      <% end %>
-    </select>
-  </div>
+  <span id="item_id_<%= i %>">
+    <form action="of_day" method="post" data-remote="true">
+      <%= i < 10 ? "0#{i}" : i %>
+      <input type="hidden" value="<%= i %>" name="item_id"></input>
+
+      <input data-item_id="<%= i %>" class="datetimepicker" name="start_date" value="<%= x %>" style="width: 166px; display: inline-block"></input>
+      <input id="start_time_<%= i %>" placeholder="<%= i %> inicio" name="start_time"></input>
+      <input data-item_id="<%= i %>" class="datetimepicker" name="end_date" value="<%= x %>" style="width: 166px; display: inline-block"></input>
+      <input placeholder="fim" name="end_time" onchange="startChanged(this, <%= i %>);"></input>
+
+      <select class="movies_select" style="width: 300px" name="movie_id">
+          <option value=""></option>
+        <% movies.each do |movie| %>
+          <option name="movie_id" value="<%= movie.id %>"><%= movie.original_name %></option>
+        <% end %>
+      </select>
+      <input id="submit_button_<%= i %>" type="submit" value="Submit">
+    <img class ="ok" src="https://cdn4.iconfinder.com/data/icons/32x32-free-design-icons/32/Ok.png" style="visibility: hidden; height: 32px;">
+    <img class="not_ok" src="http://www.pubzi.com/f/sm-red-green-OK-not-OK-Icons~YI3ce6dD8K6.png" style="visibility: hidden; height: 32px;">
+    </form>
+  </span>
   <% end %>
 </div>
 
+<textarea cols="100" rows="20"></textarea>
+
 <script>
-  $(".datetimepicker").datepick()
+  $(".datetimepicker").datepick({
+    onSelect: function(date) {
+      date = date[0]
+      var itemId = parseInt($(this).data("item_id"))
+
+      for(i = itemId+1; i < 14; i++) {
+        console.log(i)
+        $(".datetimepicker[data-item_id='" + i + "']").val(date.getDate() + '/' +(date.getMonth() + 1) + '/' +  date.getFullYear());
+      }
+
+    }
+  })
   $(".movies_select").select2()
+
+  function startChanged(element, i) {
+    $("#start_time_" +  (i + 1)).val($(element).val())
+  }
 </script>

@@ -36,6 +36,21 @@ class SchedulesController < ApplicationController
   end
 
   def update_day_schedule
+    @item_id = params["item_id"]
+    begin
+      raise "movie is nil" if params["movie_id"].blank?
+      start_date_time = DateTime.strptime("#{params['start_date']} #{params['start_time']}", '%d/%m/%Y %H:%M')
+      end_date_time = DateTime.strptime("#{params['end_date']} #{params['end_time']}", '%d/%m/%Y %H:%M')
+      movie_id = params["movie_id"]
+      @schedule = Schedule.new(start_date_time: start_date_time, end_date_time: end_date_time, movie_id: movie_id, duration_mins: (end_date_time.to_i - start_date_time.to_i) / 60)
+      @schedule.save
+    rescue => e
+      @error = e
+    end
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   private
