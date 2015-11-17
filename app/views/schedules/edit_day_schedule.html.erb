@@ -1,5 +1,6 @@
 <% movies = Movie.all %>
 <div style="color: white;">
+  <% x = "01/10/2015" %>
   <% (1..13).to_a.each do |i| %>
   <span id="item_id_<%= i %>">
     <form action="of_day" method="post" data-remote="true">

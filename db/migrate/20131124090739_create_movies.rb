@@ -7,7 +7,7 @@ class CreateMovies < ActiveRecord::Migration
       t.string :local_name
       t.integer :year
       t.string :director
-      t.string :description
+      t.text :description
       t.string :genre
       t.string :big_image_url
       t.string :small_image_url
